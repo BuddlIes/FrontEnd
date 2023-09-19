@@ -1,9 +1,11 @@
 import React from "react";
-import Header from "../../components/Header";
+import Header from "./Components/Header";
+import Main from "./Main";
 function Home() {
   return (
-    <div className="flex">
-      <div className="text-black">dfasfa</div>
+    <div className="">
+      <Header />
+      <Main />
     </div>
   );
 }
