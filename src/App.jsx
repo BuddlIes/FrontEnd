@@ -11,7 +11,7 @@ function App() {
     <div className="w-full">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" />
+        <Route path="/Login" />
       </Routes>
     </div>
   );
