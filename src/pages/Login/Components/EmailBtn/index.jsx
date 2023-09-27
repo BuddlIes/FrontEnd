@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Email() {
   return (
     <div class="login-form flex flex-col pb-4">
-      <input type="text" placeholder="아주대학교 이메일" class="rounded-lg py-3 px-4 border border-[#C7CCD0] text-[#ABB1B8]"/>
+      <input type="text" placeholder="아주대학교 이메일" class="w-80 h-12 rounded-lg py-3 px-4 border border-[#C7CCD0] text-[#ABB1B8]"/>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import BtnSign from "../../../../../src/assets/BtnSign.svg";
 function Pwd() {
     return (
         <div class="login-form flex flex-col pb-36">
-          <input type="text" placeholder="비밀번호" class="rounded-lg py-3 px-4 border border-[#C7CCD0] text-[#ABB1B8]"/>
+          <input type="text" placeholder="비밀번호" class="w-80 h-12 rounded-lg py-3 px-4 border border-[#C7CCD0] text-[#ABB1B8]"/>
         </div>
       );
 }

@@ -6,9 +6,8 @@ import BtnSign from "../../../../../src/assets/BtnSign.svg";
 function Login() {
     return(
         <div>
-            <div className="bg-main flex-1 py-3 px-4 text-white text-center hover:bg-[#D6DBDE] hover:text-[#8A8F94] transition-all rounded-lg">로그인</div>
-            <div className="border-b border-[#DDE1E6] my-16"></div>
-            <div className="text-sm text-main">회원가입하기</div>
+            <div className="w-80 h-12 my-8 bg-main flex-1 py-3 px-4 text-white text-center hover:bg-[#D6DBDE] hover:text-[#8A8F94] transition-all rounded-lg">로그인</div>
+            <div className="text-sm text-[#36383B]">버들의 계정이 없으신가요?<span className="text-[#0080DD] font-semibold"> 회원가입</span></div>
         </div>
     );
 }
