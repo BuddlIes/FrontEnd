@@ -3,7 +3,9 @@ import LeftSide from "./Components/LeftSide";
 function MainPage() {
   return (
     <div>
-      <LeftSide />
+      <div>
+        <LeftSide />
+      </div>
     </div>
   );
 }
