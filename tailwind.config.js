@@ -6,6 +6,7 @@ export default {
       colors: {
         main: "#749C03",
         home: "#B4D752A8",
+        bdblack: "#161718"
       },
     },
   },
