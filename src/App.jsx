@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 // import "./App.css";
 import Home from "../src/pages/Home";
 import MainPage from "./pages/MainPage";
+import LoginPage from "./pages/Login";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -12,7 +13,7 @@ function App() {
     <div className="w-full">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Login" />
+        <Route path="/Login" element={<LoginPage />} />
         <Route path="/main" element={<MainPage />} />
       </Routes>
     </div>
