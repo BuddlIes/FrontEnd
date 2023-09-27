@@ -1,3 +1,14 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "Pretender";
+  src: url("../public/Font/PRETENDARD-MEDIUM.OTF") format("opentype");
+}
+
+body {
+  font-family: "Pretender", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
