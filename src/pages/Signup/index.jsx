@@ -11,8 +11,8 @@ function SignupPage() {
   return (
     <div className="w-full h-full flex flex-row">
       <div className="grow flex flex-col justify-center">
-        <div className="flex flex-col items-center justify-center h-screen">
-          <div className="text-4xl pb-8 font-semibold text-bdblack">
+        <div className="flex flex-col items-center justify-center">
+          <div className="text-4xl pt-24 pb-8 font-semibold text-bdblack">
             버들 회원가입
           </div>
           <Email />

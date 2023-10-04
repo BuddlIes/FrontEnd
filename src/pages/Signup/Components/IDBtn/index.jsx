@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 
 function ID() {
     return (
-        <div class="flex flex-col py-3 px-5">
+        <div class="flex flex-col py-6 px-5">
         <div className="text-lg text-semibold text-[#161718] pb-3">학번 또는 사번 입력</div>
         <input
           type="text"
           placeholder="ex. 202020202"
-          class="w-80 h-10 py-2 px-0 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
+          class="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
         />
         <div className="text-xs font-normal text-[#CE6429]">이미 가입된 학번 또는 사번입니다.</div>
       </div>
