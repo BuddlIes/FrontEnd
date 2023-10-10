@@ -19,7 +19,7 @@ function Header() {
             </Link>
           </div>
           <div className="hover:bg-main">
-            <Link to="/SignIn">
+            <Link to="/Signup">
               <img src={BtnSign} className="w-[50px] " />
             </Link>
           </div>

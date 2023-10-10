@@ -5,9 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 //import BtnSign from "../../../../../src/assets/BtnSign.svg";
 function Email() {
   return (
-    <div class="login-form flex flex-col pb-8">
-      <label for="email" className="pb-2">아주대학교 이메일</label>
-      <input type="text" placeholder="email@ajou.ac.kr" class="bg-[#F2F4F8] py-3 px-4 border-b border-[#C1C7CD]"/>
+    <div class="flex flex-col pb-4">
+      <input
+        type="text"
+        placeholder="아주대학교 이메일"
+        class="w-80 h-12 rounded-lg py-3 px-4 border border-[#C7CCD0] text-base text-[#ABB1B8]"
+      />
     </div>
   );
 }
