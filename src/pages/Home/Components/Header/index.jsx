@@ -5,8 +5,8 @@ import BtnLogin from "../../../../../src/assets/button.svg";
 import BtnSign from "../../../../../src/assets/BtnSign.svg";
 function Header() {
   return (
-    <nav className="w-full bg-white border-gray-300">
-      <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
+    <nav className="w-full bg-white  ">
+      <div className="flex flex-wrap items-center justify-between max-w-screen-xl ">
         <div className="">
           <Link to="/">
             <img src={Logo} alt="logo" />

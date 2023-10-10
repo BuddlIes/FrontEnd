@@ -4,7 +4,6 @@ import Main from "./Main";
 function Home() {
   return (
     <div className="">
-      <Header />
       <Main />
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import LocalTittle from "./Atoms/LocalTittle";
 import LocalCategory from "./Atoms/LocalCategory";
+import SearchBox from "../../Atoms/SearchBox";
 function LeftSide() {
   const frontgate = ["정문", "버스 정류장", "중앙 도서관"];
   const won = [
@@ -59,6 +60,9 @@ function LeftSide() {
 
   return (
     <div>
+      <div>
+        <SearchBox />
+      </div>
       <div>
         <LocalTittle tittle="정문" />
         <div className="grid grid-flow-row gap-y-4">{frontList}</div>
