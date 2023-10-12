@@ -5,8 +5,9 @@ function MainPage() {
   return (
     <div className="">
       <div className="flex">
-        <LeftSide className="w-56 opacity-30 h-screen" />
+        <LeftSide className="w-56 opacity-30 h-screen " />
         <RightSide />
+        <div className="pr-20"></div>
       </div>
     </div>
   );

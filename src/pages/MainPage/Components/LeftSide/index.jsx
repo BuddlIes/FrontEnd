@@ -59,30 +59,32 @@ function LeftSide() {
   ));
 
   return (
-    <div>
+    <div className="pl-20">
       <div>
         <SearchBox />
       </div>
-      <div>
-        <LocalTittle tittle="정문" />
-        <div className="grid grid-flow-row gap-y-4">{frontList}</div>
-      </div>
-      <div>
-        <LocalTittle tittle="원천관 주변" />
-        <div className="grid grid-flow-row gap-y-4">{wonList}</div>
-      </div>
+      <div className="pt-12">
+        <div>
+          <LocalTittle tittle="정문" />
+          <div className="grid grid-flow-row gap-y-4">{frontList}</div>
+        </div>
+        <div>
+          <LocalTittle tittle="원천관 주변" />
+          <div className="grid grid-flow-row gap-y-4">{wonList}</div>
+        </div>
 
-      <div>
-        <LocalTittle tittle="기숙사" />
-        <div className="grid grid-flow-row gap-y-4">{Dorm}</div>
-      </div>
-      <div>
-        <LocalTittle tittle="아주대 북쪽" />
-        <div className="grid grid-flow-row gap-y-4">{North}</div>
-      </div>
-      <div>
-        <LocalTittle tittle="기숙사" />
-        <div className="grid grid-flow-row gap-y-4">{Student}</div>
+        <div>
+          <LocalTittle tittle="기숙사" />
+          <div className="grid grid-flow-row gap-y-4">{Dorm}</div>
+        </div>
+        <div>
+          <LocalTittle tittle="아주대 북쪽" />
+          <div className="grid grid-flow-row gap-y-4">{North}</div>
+        </div>
+        <div>
+          <LocalTittle tittle="기숙사" />
+          <div className="grid grid-flow-row gap-y-4">{Student}</div>
+        </div>
       </div>
     </div>
   );

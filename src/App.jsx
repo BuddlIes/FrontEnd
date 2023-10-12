@@ -14,10 +14,8 @@ function App() {
   return (
     <div className="w-full">
       <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/main" element={<MainPage />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/main" element={<MainPage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Signup" element={<SignupPage />} />
         <Route path="/main" element={<MainPage />} />
