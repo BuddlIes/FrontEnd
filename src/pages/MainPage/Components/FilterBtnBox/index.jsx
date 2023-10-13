@@ -9,7 +9,7 @@ function FilterBtnBox() {
     setClicked(name);
   };
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 pb-4">
       <FilterBtn
         name={BtnList[0]}
         onClick={() => changeTag(BtnList[0])}
