@@ -9,6 +9,44 @@ function RightSide() {
     console.log("clicked");
   };
   const buttonsNameList = [];
+  const write_list = [
+    {
+      title: "제목 1",
+      image: "",
+      location: "광교관",
+      time: "12시 32분",
+      hash: "이동봉사",
+    },
+    {
+      title: "제목 2",
+      image: "",
+      location: "원천관",
+      time: "12시 32분",
+      hash: "물품구매",
+    },
+    {
+      title: "제목 3",
+      image: "",
+      location: "일신관",
+      time: "12시 32분",
+      hash: "대필작업",
+    },
+    {
+      title: "제목 4",
+      image: "",
+      location: "일신관",
+      time: "12시 32분",
+      hash: "대필작업",
+    },
+    {
+      title: "제목 5",
+      image: "",
+      location: "일신관",
+      time: "12시 32분",
+      hash: "대필작업",
+    },
+  ];
+
   return (
     <div className="py-36 pl-11 w-full">
       <div className="md:flex md:flex-initial md:gap-10 ">
@@ -22,7 +60,17 @@ function RightSide() {
         </button>
       </div>
       <FilterBtnBox />
-      <Card img={SweetPotato} location={"광교관"} time={"12시 52분"} />
+      <div className="grid grid-cols-4 gap-3">
+        {write_list.map((box) => (
+          <Card
+            image={box.image}
+            hashtag={box.hash}
+            title={box.title}
+            location={box.location}
+            time={box.time}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -7,12 +7,12 @@ import SmallCont from "./Atoms/SmallCont";
 
 function MidCont({ name, content }) {
   return (
-    <div className="bg-white max-w-full">
-      <div className="px-28">
+    <div className="bg-white ">
+      <div className="px-12">
         <div className="text-[42px] text-center pt-20">
           버들에서 지속 가능한 가치 실현을 꿈꿔보세요
         </div>
-        <div className="grid grid-cols-4 py-16 gap-36">
+        <div className="grid grid-cols-4 py-16 gap-16">
           <div className="justify-self-center">
             <SmallCont name={calender} content="내 시간에 맞는 봉사활동 매칭" />
           </div>

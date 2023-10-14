@@ -6,7 +6,7 @@ import Line from "./assets/line.svg";
 function Main() {
   return (
     <div className="">
-      <div className="w-full h-screen py-28 pl-40 bg-home font-bold relative">
+      <div className="w-full h-screen py-28 font-bold relative">
         <div className="grid grid-rows-1 place-content-stretch">
           <div className="justify-center">
             <div className="text-5xl pb-3">버들에서</div>
@@ -16,15 +16,15 @@ function Main() {
         <div className="mt-10">
           <Link to="/Login">
             <button>
-              <img src={StartBtn} />
+              <img src={StartBtn} className="border" />
             </button>
           </Link>
         </div>
       </div>
-      <div className="w-full absolute top-1/2 ">
+      <div className=" absolute top-1/2 ">
         <MidCont />
       </div>
-      <div className="w-full bg-home">
+      <div className="w-full">
         <div>
           <div className="px-20 text-2xl font-bold pt-12">Buddle</div>
           <div className="pt-12 px-20 text-black">
