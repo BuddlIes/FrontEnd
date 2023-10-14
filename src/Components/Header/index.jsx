@@ -1,19 +1,50 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BuddleIcon from "./Icon/Rectangle.svg";
+import ChatIcon from "./Icon/ChatIcon.svg";
+import MypageIcon from "./Icon/MypageIcon.svg";
 function Header() {
   const navigation = useNavigate();
   return (
     <nav className="w-full bg-white">
-      <div className="flex flex-wrap items-center justify-between max-w-screen-xl ">
-        <div className="font-extrabold text-main py-3">
-          <Link to="/">Buddle </Link>
+      <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto ">
+        <div className=" text-main py-3">
+          <Link to="/">
+            <div className="flex gap-2">
+              <img src={BuddleIcon} className="w-4" />
+              <div className="text-2xl font-bold">BUDDLE</div>
+            </div>
+          </Link>
         </div>
         <div className="flex gap-x-3 text-gray-500 text-sm  max-w-screen-xl  ">
-          <div className=" hover:bg-main">
-            <Link to="/Login">Log in </Link>
+          <div className="">
+            <Link to="/chat">
+              <div className="flex gap-2">
+                <img src={ChatIcon} />
+                <div className="text-sm font-semibold text-gray05 hover:text-main">
+                  chatting
+                </div>
+              </div>
+            </Link>
           </div>
-          <div className="hover:bg-main text-gray-500">
-            <Link to="/SignIn">Sign up </Link>
+          <div className="">
+            <Link to="/mypage">
+              <div className="flex gap-2">
+                <img src={MypageIcon} />
+                <div className="text-sm font-semibold text-gray05 hover:text-main">
+                  my page
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="">
+            <Link to="/mypage">
+              <div className="flex gap-2">
+                <div className="text-sm font-semibold text-gray05 pl-3 hover:text-main">
+                  log in
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

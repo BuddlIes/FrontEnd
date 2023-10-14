@@ -9,6 +9,7 @@ export default {
         bdblack: "#161718",
         green04: "#5D6247",
         gray03: "#C7CCD0",
+        gray05: "#8A8F94",
       },
     },
     screens: {
