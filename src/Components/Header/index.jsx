@@ -38,7 +38,7 @@ function Header() {
             </Link>
           </div>
           <div className="">
-            <Link to="/mypage">
+            <Link to="/login">
               <div className="flex gap-2">
                 <div className="text-sm font-semibold text-gray05 pl-3 hover:text-main">
                   log in

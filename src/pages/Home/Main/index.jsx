@@ -24,15 +24,7 @@ function Main() {
       <div className=" absolute top-1/2 ">
         <MidCont />
       </div>
-      <div className="w-full">
-        <div>
-          <div className="px-20 text-2xl font-bold pt-12">Buddle</div>
-          <div className="pt-12 px-20 text-black">
-            <hr className="border-black border-1" />
-          </div>
-          <div className="px-20 py-12">Buddle @2023. All rights reserved.</div>
-        </div>
-      </div>
+      <div className="w-full"></div>
     </div>
   );
 }
