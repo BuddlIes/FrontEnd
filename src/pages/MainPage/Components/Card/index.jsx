@@ -1,10 +1,13 @@
 import React from "react";
 import BelowBtn from "./BelowBtn";
 import SmallLeaf from "../../../../assets/SmallLeaf.png";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useNavigation } from "react-router-dom";
+import { useEffect } from "react";
 function Card({ image, hashtag, title, location, time, id }) {
+  const navigate = useNavigate();
   const onClickHandler = (e) => {
-    console.log(`clicked, ${id}`);
+    console.log(`${id}`);
+    navigate(`/main/detailed/${id}`);
   };
   return (
     <div className=" h-44 w-76 pb-12">

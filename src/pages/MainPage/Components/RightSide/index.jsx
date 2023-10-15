@@ -4,12 +4,7 @@ import { Filter } from "@mui/icons-material";
 import SweetPotato from "../Card/SweetPotato.jpg";
 
 import Card from "../Card";
-import { useNavigate } from "react-router-dom";
-const onClickHandler = (e) => {
-  const navigate = useNavigate();
-  console.log("clicked");
-  navigate("/write", { replace: true });
-};
+
 function RightSide() {
   const write_list = [
     {
@@ -59,10 +54,7 @@ function RightSide() {
       <div className="md:flex md:flex-initial md:gap-10 ">
         <div className="text-3xl font-bold pb-12">오늘의 벗</div>
 
-        <button
-          className="ml-48 h-8 w-36 text-white bg-main rounded-3xl hover:bg-green-700"
-          onClick={onClickHandler}
-        >
+        <button className="ml-48 h-8 w-36 text-white bg-main rounded-3xl hover:bg-green-700">
           글 작성하기 ✏️
         </button>
       </div>
