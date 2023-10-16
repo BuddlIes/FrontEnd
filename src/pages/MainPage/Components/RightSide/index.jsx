@@ -4,8 +4,13 @@ import { Filter } from "@mui/icons-material";
 import SweetPotato from "../Card/SweetPotato.jpg";
 
 import Card from "../Card";
+import { useNavigate } from "react-router-dom";
 
 function RightSide() {
+  const onClickBtnHandler = (e) => {
+    console.log("clicked");
+    window.location.href = "/main/write";
+  };
   const write_list = [
     {
       id: 1,
@@ -54,7 +59,10 @@ function RightSide() {
       <div className="md:flex md:flex-initial md:gap-10 ">
         <div className="text-3xl font-bold pb-12">오늘의 벗</div>
 
-        <button className="ml-48 h-8 w-36 text-white bg-main rounded-3xl hover:bg-green-700">
+        <button
+          className="ml-48 h-8 w-36 text-white bg-main rounded-3xl hover:bg-green-700"
+          onClick={onClickBtnHandler}
+        >
           글 작성하기 ✏️
         </button>
       </div>

@@ -10,7 +10,7 @@ function Card({ image, hashtag, title, location, time, id }) {
     navigate(`/main/detailed/${id}`);
   };
   return (
-    <div className=" h-44 w-76 pb-12">
+    <div className=" h-44 w-80 pb-12">
       <div className="border">
         <img src={image} className=" h-44" />
       </div>
