@@ -32,24 +32,27 @@ function ToggleBtn(props) {
                 onClick={() => {
                   setShowMenu(false);
                 }}
+                className="my-2"
               >
                 이동 봉사
               </button>
             </li>
-            <li>
+            <li className="border-b-2">
               <button
                 onClick={() => {
                   setShowMenu(false);
                 }}
+                className="my-2"
               >
                 대필
               </button>
             </li>
-            <li>
+            <li className="border-b-2 m">
               <button
                 onClick={() => {
                   setShowMenu(false);
                 }}
+                className="my-2"
               >
                 물품 요청
               </button>
@@ -59,6 +62,7 @@ function ToggleBtn(props) {
                 onClick={() => {
                   setShowMenu(false);
                 }}
+                className="my-2"
               >
                 기타
               </button>
