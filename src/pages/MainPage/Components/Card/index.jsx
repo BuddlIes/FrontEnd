@@ -2,12 +2,23 @@ import React from "react";
 import BelowBtn from "./BelowBtn";
 import SmallLeaf from "../../../../assets/SmallLeaf.png";
 import { Navigate, useNavigate, useNavigation } from "react-router-dom";
+import axios from "axios";
 import { useEffect } from "react";
+// import { GET } from "../../../../utils/axios";
 function Card({ image, hashtag, title, location, time, id }) {
   const navigate = useNavigate();
   const onClickHandler = (e) => {
     console.log(`${id}`);
-    navigate(`/main/detailed/${id}`);
+    // GET(`volunteer/get_volunteer_list?hashtag/${id}`, true);
+    // console.log(data);.
+    axios
+      .get(
+        `http://52.79.132.18:8443/volunteer/get_volunteer_list?hashtag=${id}`
+      )
+      .then((response) => {
+        console.log(response.data);
+      });
+    //navigate(`/main/detailed/${id}`);
   };
   return (
     <div className=" h-44 w-80 pb-12">

@@ -3,7 +3,7 @@ import FilterBtn from "../../Atoms/FilterBtn";
 import { useState } from "react";
 function FilterBtnBox() {
   const BtnList = ["전체", "이동봉사", "대필", "물품요청", "기타"];
-  const [clickedItem, setClicked] = useState();
+  const [clickedItem, setClicked] = useState([false, false, false, false]);
   const changeTag = (name) => {
     setClicked("");
     setClicked(name);

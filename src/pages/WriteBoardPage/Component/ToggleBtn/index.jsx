@@ -3,9 +3,11 @@ import downBtn from "./img/ic.svg";
 import { useState } from "react";
 function ToggleBtn(props) {
   const [showMenu, setShowMenu] = useState(false);
+  const [selectedMenu, setSelectMenu] = useState("");
   const onClickHandler = (e) => {
     setShowMenu(!showMenu);
     console.log(`${showMenu}`);
+    setSelectMenu()
   };
   return (
     <div className="">
@@ -28,12 +30,7 @@ function ToggleBtn(props) {
         <div className="px-4 py-3 ">
           <ul className="py-4">
             <li className="border-b-2 ">
-              <button
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="my-2"
-              >
+              <button onClick={onClickHandler} className="my-2">
                 이동 봉사
               </button>
             </li>
@@ -48,22 +45,12 @@ function ToggleBtn(props) {
               </button>
             </li>
             <li className="border-b-2 m">
-              <button
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="my-2"
-              >
+              <button onClick={onClickHandler} className="my-2">
                 물품 요청
               </button>
             </li>
             <li>
-              <button
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="my-2"
-              >
+              <button onClick={onClickHandler} className="my-2">
                 기타
               </button>
             </li>
