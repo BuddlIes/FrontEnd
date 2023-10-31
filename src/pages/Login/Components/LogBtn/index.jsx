@@ -1,8 +1,9 @@
 //Login
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import BtnLogin from "../../../../../src/assets/button.svg";
 import BtnSign from "../../../../../src/assets/BtnSign.svg";
+
 function Login() {
   return (
     <div>
@@ -11,7 +12,9 @@ function Login() {
       </div>
       <div className="text-sm text-center text-[#36383B] font-normal">
         버들의 계정이 없으신가요?
-        <span className="text-[#0080DD] font-semibold"> 회원가입</span>
+        <Link to="../../../../Signup" className="text-[#0080DD] font-semibold">
+          회원가입
+        </Link>
       </div>
     </div>
   );
