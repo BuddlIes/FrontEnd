@@ -7,7 +7,7 @@ function ToggleBtn(props) {
   const onClickHandler = (e) => {
     setShowMenu(!showMenu);
     console.log(`${showMenu}`);
-    setSelectMenu()
+    setSelectMenu();
   };
   return (
     <div className="">
