@@ -12,9 +12,7 @@ function Card({ image, hashtag, title, location, time, id }) {
     // GET(`volunteer/get_volunteer_list?hashtag/${id}`, true);
     // console.log(data);.
     axios
-      .get(
-        `http://52.79.132.18:8443/volunteer/get_volunteer_list?hashtag=${id}`
-      )
+      .get(`/volunteer/get_volunteer_list?hashtag=${id}`)
       .then((response) => {
         console.log(response.data);
       });
