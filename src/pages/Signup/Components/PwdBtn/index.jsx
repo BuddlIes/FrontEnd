@@ -21,7 +21,7 @@ function Pwd() {
     <div className="flex flex-col py-6 px-5">
       <div className="text-lg font-bold text-[#161718] pb-3">비밀번호 생성</div>
       <input
-        type="text"
+        type="password"
         placeholder="비밀번호 입력"
         value={password}
         onChange={handlePasswordChange}
@@ -29,7 +29,7 @@ function Pwd() {
         className="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
       />
       <input
-        type="text"
+        type="password"
         placeholder="비밀번호 입력 재확인"
         value={confirmPassword}
         onChange={handleConfirmPasswordChange}

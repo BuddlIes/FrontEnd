@@ -15,7 +15,7 @@ function Pwd() {
     <div>
       <div className="flex flex-col">
         <input
-          type="text"
+          type="password"
           placeholder="비밀번호"
           value={password}
           onChange={handlePasswordChange}
