@@ -3,6 +3,7 @@ import ToggleBtn from "./Component/ToggleBtn";
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import ImgBox from "./Component/ImgBox";
+import CompleteBtn from "./Component/CompleteBtn";
 function WriteBoardPage() {
   const [image, setImgSrc] = useState(null);
   const onUpload = () => {
@@ -19,7 +20,7 @@ function WriteBoardPage() {
   };
 
   return (
-    <div className="w-full">
+    <div className="">
       <div className=" md:px-56">
         <div className="text-main font-semibold text-xl my-4">카테고리</div>
         <div className="mb-10">
@@ -96,6 +97,9 @@ function WriteBoardPage() {
             placeholder="제목 작성"
             className="border-b border-main w-full"
           ></input>
+        </div>
+        <div className="pt-3 bg-white items-center">
+          <CompleteBtn />
         </div>
       </div>
     </div>
