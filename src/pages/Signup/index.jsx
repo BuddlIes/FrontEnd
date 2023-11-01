@@ -16,10 +16,10 @@ function SignupPage() {
             버들 회원가입
           </div>
           <Email />
-          <Pwd />
-          <ID />
           <Username />
           <Duplicate />
+          <Pwd />
+          <ID />
           <Signup />
         </div>
       </div>
