@@ -2,7 +2,7 @@ import React from "react";
 
 function Bottom() {
   return (
-    <div className="border-t fixed bottom-0">
+    <div className="border-t fixed bottom-0 bg-white">
       <div className="text-main text-xl  font-semibold pb-3 pt-6 flex-1">
         Buddle
       </div>
