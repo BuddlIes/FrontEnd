@@ -12,7 +12,7 @@ function Header() {
           <Link to="/">
             <div className="flex gap-2">
               <img src={BuddleIcon} className="w-4" />
-              <div className="text-2xl font-bold">BUDDLE</div>
+              <div className="text-2xl font-bold">Buddle</div>
             </div>
           </Link>
         </div>

@@ -2,8 +2,8 @@ import React from "react";
 
 function Bottom() {
   return (
-    <div className="border-t fixed bottom-0 bg-white">
-      <div className="text-main text-xl  font-semibold pb-3 pt-6 flex-1">
+    <div className="border-t fixed bottom-0 bg-white w-full mb-1">
+      <div className="text-main text-xl  font-semibold pb-3 pt-3 flex-1">
         Buddle
       </div>
       <div className="grid grid-cols-2 gap-10">

@@ -59,7 +59,7 @@ function LeftSide() {
   ));
 
   return (
-    <div className="pl-20">
+    <div className="pl-20 ">
       <div>
         <SearchBox />
       </div>
