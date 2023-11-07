@@ -5,17 +5,19 @@ import FirstNFT from "./Components/FirstNFT";
 import SecondNFT from "./Components/SecondNFT";
 import ThirdNFT from "./Components/ThirdNFT";
 
-function NFTPage () {
-    return (
-        <div className="w-full h-full flex flex-row">
-            <div className="grow flex flex-col justify-center">
-                <BudStatus />
-                <FirstNFT />
-                <SecondNFT />
-                <ThirdNFT />
-            </div>
+function NFTPage() {
+  return (
+    <div className="w-full h-full flex flex-row">
+      <div className="grow flex flex-col items-center h-screen">
+        <div className="max-w-3xl mx-auto">
+          <BudStatus />
+          <FirstNFT />
+          <SecondNFT />
+          <ThirdNFT />
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default NFTPage;
