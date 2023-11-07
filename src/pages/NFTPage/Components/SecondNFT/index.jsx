@@ -12,7 +12,7 @@ function SecondNFT() {
       </div>
       <div className="flex items-center pt-8">
         <div>
-          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4">
+          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] border-dashed mx-4 filter grayscale">
             <img src="/src/assets/버들 로고.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
@@ -20,7 +20,7 @@ function SecondNFT() {
           </div>
         </div>
         <div>
-          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4">
+          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] border-dashed mx-4 filter grayscale">
             <img src="/src/assets/버들 로고.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
@@ -28,7 +28,7 @@ function SecondNFT() {
           </div>
         </div>
         <div>
-          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4">
+          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] border-dashed mx-4 filter grayscale">
             <img src="/src/assets/버들 로고.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
