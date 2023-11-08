@@ -1,5 +1,6 @@
 //Email
 import React, { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function Email() {
@@ -12,7 +13,7 @@ function Email() {
   return (
     <div className="flex flex-col pb-4">
       <input
-        type="text"
+        type="email"
         placeholder="아주대학교 이메일"
         value={email}
         onChange={handleEmailChange}
