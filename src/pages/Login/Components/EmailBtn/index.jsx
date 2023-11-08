@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Email() {
   const [email, setEmail] = useState(""); // 입력된 이메일 상태
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value); // 입력된 이메일 업데이트
