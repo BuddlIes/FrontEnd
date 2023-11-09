@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ function SignupPage() {
   const [studentCode, setStudentCode] = useState("");
   const [name, setName] = useState("");
   const [nft, setNFT] = useState("");
-
+  const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -27,6 +28,7 @@ function SignupPage() {
       };
       await axiosInstance.post("/join", data).then((response) => {
         console.log(response.data);
+        navigate("/login");
       });
     } catch (e) {
       console.log(e);

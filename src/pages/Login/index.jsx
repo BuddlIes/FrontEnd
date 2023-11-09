@@ -4,6 +4,7 @@ import Login from "./Components/LogBtn";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState(""); // 입력된 이메일 상태
@@ -94,8 +95,9 @@ function LoginPage() {
               로그인
             </button>
           </form>
-
-          <Login />
+          <Link to="/Signup" className="text-[#0080DD] font-semibold">
+            회원가입
+          </Link>
         </div>
       </div>
     </div>
