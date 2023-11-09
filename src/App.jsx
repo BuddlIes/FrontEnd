@@ -10,7 +10,7 @@ import SignupPage from "./pages/Signup";
 import MainLayout from "./Components/MainLayout";
 import DetailBoardPage from "./pages/DetailBoardPage";
 import WriteBoardPage from "./pages/WriteBoardPage";
-import ChatPage from "./pages/ChatPage";
+import NFTPage from "./pages/NFTPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,11 +21,11 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/main" element={<MainPage />} />
+          <Route path="/main/write" element={<WriteBoardPage />} />
+          <Route path="/main/detailed/:id" element={<DetailBoardPage />} />
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Signup" element={<SignupPage />} />
-          <Route path="/main/detailed/:id" element={<DetailBoardPage />} />
-          <Route path="/main/write" element={<WriteBoardPage />} />
-          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/NFT" element={<NFTPage />} />
         </Route>
       </Routes>
     </div>

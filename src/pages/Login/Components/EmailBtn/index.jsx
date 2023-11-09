@@ -1,9 +1,11 @@
 //Email
 import React, { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function Email() {
   const [email, setEmail] = useState(""); // 입력된 이메일 상태
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value); // 입력된 이메일 업데이트
@@ -12,7 +14,7 @@ function Email() {
   return (
     <div className="flex flex-col pb-4">
       <input
-        type="text"
+        type="email"
         placeholder="아주대학교 이메일"
         value={email}
         onChange={handleEmailChange}
