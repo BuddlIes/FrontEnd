@@ -13,8 +13,6 @@ import WriteBoardPage from "./pages/WriteBoardPage";
 import NFTPage from "./pages/NFTPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="w-full ">
       <Routes>
