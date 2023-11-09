@@ -154,7 +154,7 @@ function WriteBoardPage() {
               type="text"
               placeholder="제목 작성"
               className="border-b border-main w-full"
-              onClick={(e) => setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             ></input>
           </div>
           <div id="내용" className="pt-4">
@@ -166,7 +166,7 @@ function WriteBoardPage() {
               type="text"
               placeholder="내용을 입력해주세요"
               className="border border-main w-full h-full"
-              onClick={(e) => setContent(e.target.value)}
+              onChange={(e) => setContent(e.target.value)}
             />
           </div>
           <div className="pt-4">
