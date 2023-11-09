@@ -10,12 +10,13 @@ import SignupPage from "./pages/Signup";
 import MainLayout from "./Components/MainLayout";
 import DetailBoardPage from "./pages/DetailBoardPage";
 import WriteBoardPage from "./pages/WriteBoardPage";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
@@ -24,6 +25,7 @@ function App() {
           <Route path="/Signup" element={<SignupPage />} />
           <Route path="/main/detailed/:id" element={<DetailBoardPage />} />
           <Route path="/main/write" element={<WriteBoardPage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Route>
       </Routes>
     </div>

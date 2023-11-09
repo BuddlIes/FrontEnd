@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import BuddleIcon from "./Icon/Rectangle.svg";
 import ChatIcon from "./Icon/ChatIcon.svg";
 import MypageIcon from "./Icon/MypageIcon.svg";
+
 function Header() {
   const navigation = useNavigate();
   return (
@@ -23,6 +24,16 @@ function Header() {
                 <img src={ChatIcon} />
                 <div className="text-sm font-semibold text-gray05 hover:text-main">
                   chatting
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="">
+            <Link to="/NFT">
+              <div className="flex gap-2">
+                <img src={BuddleIcon} className="w-4" />
+                <div className="text-sm font-semibold text-gray05 hover:text-main">
+                  NFT
                 </div>
               </div>
             </Link>

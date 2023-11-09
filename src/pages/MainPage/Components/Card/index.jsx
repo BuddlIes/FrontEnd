@@ -18,8 +18,9 @@ function Card({ image, hashtag, title, location, time, id }) {
       .then((response) => {
         console.log(response.data);
       });
-    //navigate(`/main/detailed/${id}`);
+    navigate(`/main/detailed/${id}`);
   };
+
   return (
     <div className=" h-44 w-80 pb-12">
       <div className="border">

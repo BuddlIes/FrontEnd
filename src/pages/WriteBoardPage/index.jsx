@@ -3,10 +3,40 @@ import ToggleBtn from "./Component/ToggleBtn";
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import ImgBox from "./Component/ImgBox";
+import axios from "axios";
 import CompleteBtn from "./Component/CompleteBtn";
+import downBtn from "../WriteBoardPage/Component/ToggleBtn/img/ic.svg";
+
 function WriteBoardPage() {
   const [image, setImgSrc] = useState(null);
-  const onUpload = () => {
+  const [meetTime, setMeetTime] = useState(null);
+  const [placeComment, setPlaceComment] = useState("");
+  const [costTime, setCostTime] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const [selectedMenu, setSelectMenu] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [date, setDate] = useState("");
+  const [categoryName, setCategoryName] = useState("카테고리");
+  const onClickToggleHandler = (e) => {
+    console.log("clicked");
+    setShowMenu(!showMenu);
+    console.log(`${showMenu}`);
+    setSelectMenu();
+    if (e.target.value === "portVolunteer") {
+      setCategoryName("이동봉사");
+    }
+    if (e.target.value === "pencil") {
+      setCategoryName("대필");
+    }
+    if (e.target.value === "supply") {
+      setCategoryName("물품 요청");
+    }
+    if (e.target.value === "guitar") {
+      setCategoryName("기타");
+    }
+  };
+  const onUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -18,90 +48,196 @@ function WriteBoardPage() {
       };
     });
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const writer = localStorage.getItem("schoolNum");
+
+    console.log("clicked");
+    console.log(writer);
+    // localStorage.getItem("")
+
+    const body = {
+      writer: writer,
+      title: title,
+      detailed: content,
+      hashtag: categoryName,
+      img: "HTTPS",
+      whenVol: meetTime,
+      place: placeComment,
+      volTime: costTime,
+    };
+    console.log(body);
+    const axiosInstance = axios.create({
+      baseURL: "http://52.79.132.18:8443",
+    });
+    try {
+      const authToken = localStorage.getItem("access_token");
+
+      console.log(localStorage.access_token);
+      const config = {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      };
+      await axiosInstance
+        .post("/volunteer/register_vol", body, config)
+        .then((response) => console.log(response));
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div className="">
-      <div className=" md:px-56">
-        <div className="text-main font-semibold text-xl my-4">카테고리</div>
-        <div className="mb-10">
-          <ToggleBtn name={"카테고리 선택"} />
-        </div>
-        <div id="제목">
-          <div className="text-main font-semibold text-xl my-4">제목</div>
-          <input
-            type="text"
-            placeholder="제목 작성"
-            className="border-b border-main w-full"
-          ></input>
-        </div>
-        <div id="내용" className="pt-4">
-          <div className="text-main font-semibold text-xl my-4">내용</div>
-          <div className=" text-gray-500">
-            구체적인 요청 사항을 입력해주세요.
-          </div>
-          <TextField
-            type="text"
-            placeholder="내용을 입력해주세요"
-            className="border border-main w-full h-full"
-          />
-        </div>
-        <div className="pt-4">
-          <div className="flex gap-3.5">
-            <div className="text-main font-semibold text-xl mt-4">사진</div>
-            <div className="text-blue-600 mt-5">* 선택사항</div>
-          </div>
-          <input
-            accept="image/*"
-            multiple
-            type="file"
-            onChange={(e) => onUpload(e)}
-          />
-          <div className="">
-            <ImgBox />
-          </div>
-        </div>
-        <div id="날짜" className="pt-4">
-          <div className="text-main font-semibold text-xl mt-4">날짜</div>
-          <div className=" text-gray-500">봉사자와 만날 날짜를 정해주세요.</div>
-          <TextField
-            type="text"
-            placeholder="날짜를 입력해주세요"
-            className="border border-main w-full h-full"
-          />
-        </div>
-        <div id="시간" className="pt-4">
-          <div className="text-main font-semibold text-xl mt-4">시간</div>
-          <div className=" text-gray-500">봉사자와 만날 시간을 정해주세요.</div>
-          <TextField
-            type="text"
-            placeholder="시간을 입력해주세요"
-            className="border border-main w-full h-full"
-          />
-        </div>
+      <form onSubmit={handleSubmit}>
+        <div className=" md:px-56">
+          <div className="text-main font-semibold text-xl my-4">카테고리</div>
+          <div className="mb-10">
+            {/*토글 버튼*/}
+            <div className="">
+              <button onClick={onClickToggleHandler}>
+                <ToggleBtn name={categoryName} />
+              </button>
 
-        <div id="예상 소요 시간" className="pt-4">
-          <div className="text-main font-semibold text-xl mt-4">
-            예상 소요 시간
+              {/*toggle menu*/}
+              <div
+                className={`${
+                  showMenu ? "block" : "hidden"
+                } z-50 fixed top-32 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow text-center`}
+              >
+                <div className="px-4 py-3 ">
+                  <ul className="py-4">
+                    <li className="border-b-2 ">
+                      <button
+                        value={"portVolunteer"}
+                        onClick={onClickToggleHandler}
+                        className="my-2"
+                      >
+                        이동 봉사
+                      </button>
+                    </li>
+                    <li className="border-b-2">
+                      <button
+                        value={"pencil"}
+                        onClick={onClickToggleHandler}
+                        className="my-2"
+                      >
+                        대필
+                      </button>
+                    </li>
+                    <li className="border-b-2 m">
+                      <button
+                        value={"supply"}
+                        onClick={onClickToggleHandler}
+                        className="my-2"
+                      >
+                        물품 요청
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        value={"guitar"}
+                        onClick={onClickToggleHandler}
+                        className="my-2"
+                      >
+                        기타
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className=" text-gray-500">소요될 예상 시간을 정해주세요.</div>
-          <TextField
-            type="text"
-            placeholder="시간을 입력해주세요"
-            className="border border-main w-full h-full"
-          />
+          <div id="제목">
+            <div className="text-main font-semibold text-xl my-4">제목</div>
+            <input
+              type="text"
+              placeholder="제목 작성"
+              className="border-b border-main w-full"
+              onClick={(e) => setTitle(e.target.value)}
+            ></input>
+          </div>
+          <div id="내용" className="pt-4">
+            <div className="text-main font-semibold text-xl my-4">내용</div>
+            <div className=" text-gray-500">
+              구체적인 요청 사항을 입력해주세요.
+            </div>
+            <TextField
+              type="text"
+              placeholder="내용을 입력해주세요"
+              className="border border-main w-full h-full"
+              onClick={(e) => setContent(e.target.value)}
+            />
+          </div>
+          <div className="pt-4">
+            <div className="flex gap-3.5">
+              <div className="text-main font-semibold text-xl mt-4">사진</div>
+              <div className="text-blue-600 mt-5">* 선택사항</div>
+            </div>
+            <input
+              accept="image/*"
+              multiple
+              type="file"
+              onChange={(e) => onUpload(e)}
+            />
+            <div className="">
+              <ImgBox />
+            </div>
+          </div>
+          <div id="날짜" className="pt-4">
+            <div className="text-main font-semibold text-xl mt-4">날짜</div>
+            <div className=" text-gray-500">
+              봉사자와 만날 날짜를 정해주세요.
+            </div>
+            <textarea
+              type="text"
+              placeholder="날짜를 입력해주세요"
+              className="border border-main w-full h-full"
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+          <div id="시간" className="pt-4">
+            <div className="text-main font-semibold text-xl mt-4">시간</div>
+            <div className=" text-gray-500">
+              봉사자와 만날 시간을 정해주세요.
+            </div>
+            <TextField
+              type="text"
+              placeholder="시간을 입력해주세요"
+              className="border border-main w-full h-full"
+              onChange={(e) => setMeetTime(e.target.value)}
+            />
+          </div>
+
+          <div id="예상 소요 시간" className="pt-4">
+            <div className="text-main font-semibold text-xl mt-4">
+              예상 소요 시간
+            </div>
+            <div className=" text-gray-500">소요될 예상 시간을 정해주세요.</div>
+            <TextField
+              type="text"
+              placeholder="예상 소요 시간을 입력해주세요"
+              className="border border-main w-full h-full"
+              onChange={(e) => setCostTime(e.target.value)}
+            />
+          </div>
+          <div id="장소" className="pt-4">
+            <div className="text-main font-semibold text-xl mt-4">장소</div>
+            <textarea
+              type="text"
+              placeholder="장소를 입력해주세요"
+              className="border-b border-main w-full"
+              onChange={(e) => setPlaceComment(e.target.value)}
+            />
+          </div>
+          <button
+            type="submit"
+            className="text-white text-center text-lg pt-2 bg-main rounded w-80 h-11"
+          >
+            완료
+          </button>
         </div>
-        <div id="장소" className="pt-4">
-          <div className="text-main font-semibold text-xl mt-4">장소</div>
-          <input
-            type="text"
-            placeholder="제목 작성"
-            className="border-b border-main w-full"
-          ></input>
-        </div>
-        <div className="pt-3 bg-white items-center">
-          <CompleteBtn />
-        </div>
-      </div>
+      </form>
     </div>
   );
 }
