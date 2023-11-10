@@ -43,7 +43,7 @@ function SignupPage() {
             className="flex flex-col py-6 px-5 "
             onSubmit={submitHandler}
           >
-            <div className="text-4xl pt-24 pb-8 font-semibold text-bdblack">
+            <div className="text-4xl pt-24 pb-8 font-semibold text-bdblack text-center">
               버들 회원가입
             </div>
             <div id="이메일 입력" className="pb-6">
@@ -59,17 +59,17 @@ function SignupPage() {
               />
             </div>
 
-            <div className="text-lg font-bold text-[#161718] pb-3">
-              비밀번호 생성
-              <div className="flex pb-6">
-                <input
-                  type="password"
-                  placeholder="비밀번호 입력"
-                  style={{ color: "#161718" }}
-                  className="w-80 h-10 py-4 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+            <div id="비밀번호 입력" className="pb-6">
+              <div className="text-lg font-bold text-[#161718] pb-3">
+                비밀번호 생성
               </div>
+              <input
+                type="password"
+                placeholder="비밀번호 입력"
+                style={{ color: "#161718" }}
+                className="w-80 h-10 py-4 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
 
             <div id="닉네임 생성" className="pb-6">
@@ -92,8 +92,8 @@ function SignupPage() {
                 type="text"
                 placeholder="이름을 입력해주세요"
                 style={{ color: "#161718" }}
-                onClick={(e) => setName(e.target.value)}
-                className="w-80 h-10 py-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
+                onChange={(e) => setName(e.target.value)}
+                className="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
               />
             </div>
             <div className="text-lg font-bold text-[#161718] pb-3">
@@ -104,15 +104,17 @@ function SignupPage() {
               placeholder="ex. 202020202"
               style={{ color: "#161718" }}
               onChange={(e) => setStudentCode(e.target.value)}
-              className="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
+              className="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8] mb-6 "
             />
-            <div className="text-lg font-bold text-[#161718] pb-3">NFT</div>
+            <div className="text-lg font-bold text-[#161718] pb-3">
+              지갑 주소
+            </div>
             <input
               type="text"
               placeholder="ex. 202020202"
               style={{ color: "#161718" }}
               onChange={(e) => setNFT(e.target.value)}
-              className="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8]"
+              className="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8] mb-6"
             />
             <button
               type="submit"

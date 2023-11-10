@@ -61,19 +61,19 @@ function LoginPage() {
             className="flex flex-col py-6 px-5 "
             onSubmit={submitHandler}
           >
-            <div className="text-4xl pb-8 font-semibold text-bdblack">
+            <div className="text-4xl pb-8 font-semibold text-bdblack text-center">
               버들 로그인
             </div>
-            <div className="text-base pb-16 text-[#36383B] font-semibold">
+            <div className="text-base pb-16 text-[#36383B] font-semibold text-center">
               버들에서 <span className="text-main">벗</span>의 가치를
               실현해보세요
             </div>
             <input
-              type="text"
+              type="email"
               placeholder="아주대학교 이메일"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-80 h-12 rounded-lg py-3 px-4 border border-[#C7CCD0] text-base ${
+              className={`w-80 h-12 rounded-lg py-3 px-4 border border-[#C7CCD0] mb-2 text-base ${
                 email ? "text-[#161718]" : "text-[#ABB1B8]"
               }`}
             />
@@ -95,9 +95,12 @@ function LoginPage() {
               로그인
             </button>
           </form>
-          <Link to="/Signup" className="text-[#0080DD] font-semibold">
-            회원가입
-          </Link>
+          <div className="text-sm text-center text-[#36383B] font-normal">
+            버들의 계정이 없으신가요?
+            <Link to="/Signup" className="text-[#0080DD] font-semibold ml-2">
+              회원가입
+            </Link>
+          </div>
         </div>
       </div>
     </div>
