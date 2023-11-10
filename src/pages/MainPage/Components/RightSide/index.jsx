@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FilterBtnBox from "../FilterBtnBox";
+import axios from "axios";
 import { Filter } from "@mui/icons-material";
 import SweetPotato from "../Card/SweetPotato.jpg";
 
@@ -7,11 +8,41 @@ import Card from "../Card";
 import { useNavigate } from "react-router-dom";
 
 function RightSide() {
+  const [hashtag, setHashTag] = useState("전체");
+  const [boardList, setBoardList] = useState({});
+
   const onClickBtnHandler = (e) => {
     console.log("clicked");
     window.location.href = "/main/write";
   };
-  const write_list = [
+
+  const getBoardList = async () => {
+    const axiosInstance = axios.create({
+      baseURL: "http://52.79.132.18:8443",
+    });
+    try {
+      const authToken = localStorage.getItem("access_token");
+
+      //console.log(localStorage.access_token);
+      const config = {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      };
+      const result = await axiosInstance.get(
+        `/volunteer/get_volunteer_list?hashtag=${hashtag}`,
+        config
+      );
+      setBoardList(result);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getBoardList();
+  }, [boardList]);
+  /*const write_list = [
     {
       id: 1,
       title: "제목 1",
@@ -52,7 +83,7 @@ function RightSide() {
       time: "12시 32분",
       hash: "대필작업",
     },
-  ];
+  ];*/
 
   return (
     <div className="py-36 pl-11 w-full">
@@ -68,18 +99,7 @@ function RightSide() {
       </div>
       <FilterBtnBox />
       <div className="relative flex flex-wrap gap-32">
-        {write_list.map((box) => (
-          <Card
-            image={box.image}
-            hashtag={box.hash}
-            title={box.title}
-            location={box.location}
-            time={box.time}
-            key={box.id}
-            id={box.id}
-            className="pb-3"
-          />
-        ))}
+        <Card {...boardList} />
       </div>
     </div>
   );

@@ -4,8 +4,7 @@ import { TextField } from "@mui/material";
 import { useState } from "react";
 import ImgBox from "./Component/ImgBox";
 import axios from "axios";
-import CompleteBtn from "./Component/CompleteBtn";
-import downBtn from "../WriteBoardPage/Component/ToggleBtn/img/ic.svg";
+import { useNavigate } from "react-router-dom";
 
 function WriteBoardPage() {
   const [image, setImgSrc] = useState(null);
@@ -18,6 +17,7 @@ function WriteBoardPage() {
   const [content, setContent] = useState("");
   const [date, setDate] = useState("");
   const [categoryName, setCategoryName] = useState("카테고리");
+  const navigate = useNavigate();
   const onClickToggleHandler = (e) => {
     console.log("clicked");
     setShowMenu(!showMenu);
@@ -66,7 +66,7 @@ function WriteBoardPage() {
       place: placeComment,
       volTime: costTime,
     };
-    console.log(body);
+    //console.log(body);
     const axiosInstance = axios.create({
       baseURL: "http://52.79.132.18:8443",
     });
@@ -81,7 +81,10 @@ function WriteBoardPage() {
       };
       await axiosInstance
         .post("/volunteer/register_vol", body, config)
-        .then((response) => console.log(response));
+        .then((response) => {
+          console.log(response);
+          navigate("/main");
+        });
     } catch (e) {
       console.log(e);
     }
@@ -95,7 +98,7 @@ function WriteBoardPage() {
           <div className="mb-10">
             {/*토글 버튼*/}
             <div className="">
-              <button onClick={onClickToggleHandler}>
+              <button type="button" onClick={onClickToggleHandler}>
                 <ToggleBtn name={categoryName} />
               </button>
 
@@ -109,6 +112,7 @@ function WriteBoardPage() {
                   <ul className="py-4">
                     <li className="border-b-2 ">
                       <button
+                        type="button"
                         value={"portVolunteer"}
                         onClick={onClickToggleHandler}
                         className="my-2"
@@ -118,6 +122,7 @@ function WriteBoardPage() {
                     </li>
                     <li className="border-b-2">
                       <button
+                        type="button"
                         value={"pencil"}
                         onClick={onClickToggleHandler}
                         className="my-2"
@@ -127,6 +132,7 @@ function WriteBoardPage() {
                     </li>
                     <li className="border-b-2 m">
                       <button
+                        type="button"
                         value={"supply"}
                         onClick={onClickToggleHandler}
                         className="my-2"
@@ -136,6 +142,7 @@ function WriteBoardPage() {
                     </li>
                     <li>
                       <button
+                        type="button"
                         value={"guitar"}
                         onClick={onClickToggleHandler}
                         className="my-2"
