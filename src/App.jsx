@@ -12,6 +12,7 @@ import MainLayout from "./Components/MainLayout";
 import DetailBoardPage from "./pages/DetailBoardPage";
 import WriteBoardPage from "./pages/WriteBoardPage";
 import NFTPage from "./pages/NFTPage";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Signup" element={<SignupPage />} />
           <Route path="/NFT" element={<NFTPage />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Route>
       </Routes>
     </div>
