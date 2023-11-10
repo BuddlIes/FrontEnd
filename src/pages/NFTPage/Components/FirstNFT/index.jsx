@@ -1,6 +1,7 @@
 //할인율 5% NFT
 import React, { useState } from "react";
 import Modal from "react-modal";
+// import axios from "axios";
 
 function FirstNFT() {
   const [isCUModalOpen, setIsCUModalOpen] = useState(false);
