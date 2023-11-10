@@ -116,7 +116,7 @@ function SignupPage() {
             />
             <button
               type="submit"
-              className="w-full h-11 mt-2 mb-10 bg-white flex-1 py-2.5 px-4 text-base font-semibold border border-[#749C03] text-[#749C03] text-center hover:border-[#ABB1B8] hover:text-white hover:bg-main transition-all rounded-lg"
+              className="w-full h-11 mt-2 mb-40 bg-white flex-1 py-2.5 px-4 text-base font-semibold border border-[#749C03] text-[#749C03] text-center hover:border-[#ABB1B8] hover:text-white hover:bg-main transition-all rounded-lg"
             >
               회원가입
             </button>
