@@ -1,0 +1,1 @@
+//second stamp 10%
