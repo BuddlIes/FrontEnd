@@ -63,7 +63,12 @@ function FirstNFT() {
           {/* 팝업 내용 */}
           <h2 className="text-2xl font-bold text-bdblack">CU 로고 팝업</h2>
           {/* 이곳에 원하는 팝업 내용을 추가하세요. */}
-          <button className="mt-4 py-2 px-4 bg-main text-white rounded-full hover:bg-[#D6DBDE] transition-all" onClick={closeModal}>닫기</button>
+          <button
+            className="mt-4 py-2 px-4 bg-main text-white rounded-full hover:bg-[#D6DBDE] transition-all"
+            onClick={closeModal}
+          >
+            닫기
+          </button>
         </div>
       </Modal>
     </div>
