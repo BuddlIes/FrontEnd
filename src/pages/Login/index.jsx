@@ -16,7 +16,6 @@ function LoginPage() {
       baseURL: "http://52.79.132.18:8443",
     });
     try {
-      console.log("a");
       e.preventDefault();
 
       const response = await axiosInstance.post("/login", {
@@ -26,27 +25,12 @@ function LoginPage() {
       console.log(response);
 
       const authToken = response.data.data.token;
-      const schoolNum = response.data.data.userNum;
 
       console.log(authToken);
-      console.log(schoolNum);
 
       localStorage.setItem("access_token", authToken);
-      localStorage.setItem("schoolNum", schoolNum);
 
-      console.log(localStorage.access_token);
-      const config = {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      };
-      const infoResponse = await axiosInstance.get(
-        "/volunteer/get_volunteer_list?hashtag=전체",
-        config
-      );
-      console.log(infoResponse);
       navigate("/main");
-      // alert(id + "(" + infoResponse.data.memberRole + ")" + "님 환영합니다");
     } catch (error) {
       alert("아이디나 비밀번호가 틀렸습니다");
       console.error("오류", error);

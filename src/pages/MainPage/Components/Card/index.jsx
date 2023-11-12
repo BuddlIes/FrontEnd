@@ -7,17 +7,19 @@ import { useEffect } from "react";
 // import { GET } from "../../../../utils/axios";
 function Card({ image, hashtag, title, location, time, id }) {
   const navigate = useNavigate();
+  console.log(image);
+  console.log(hashtag);
   const onClickHandler = (e) => {
     console.log(`${id}`);
     // GET(`volunteer/get_volunteer_list?hashtag/${id}`, true);
     // console.log(data);.
-    axios
-      .get(
-        `http://52.79.132.18:8443/volunteer/get_volunteer_content?volunteerId=${id}`
-      )
-      .then((response) => {
-        console.log(response.data);
-      });
+    // axios
+    //   .get(
+    //     `http://52.79.132.18:8443/volunteer/get_volunteer_content?volunteerId=${id}`
+    //   )
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   });
     navigate(`/main/detailed/${id}`);
   };
 
@@ -32,7 +34,7 @@ function Card({ image, hashtag, title, location, time, id }) {
         </div>
         <div className="flex gap-2 pt-3">
           <img src={SmallLeaf} />
-          <button className="text-base font-semibold" onClick={onClickHandler}>
+          <button className="text-base font-semibold " onClick={onClickHandler}>
             {title}
           </button>
         </div>

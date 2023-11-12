@@ -5,43 +5,98 @@ import PlacePin from "./img/PlacePin.png";
 import BelowBtn from "./Component/BelowBtn";
 import ZimBtn from "./Component/ZimBtn";
 import CommentBox from "./Component/CommentBox";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
+import base64 from "base-64";
 function DetailBoardPage() {
   const [boardData, setBoardData] = useState({});
   const { id } = useParams();
-  console.log(id);
+  const [title, setTitle] = useState("");
+  const [writer, setWriter] = useState("");
+  const [place, setPlace] = useState("");
+  const [encoded, setEncoded] = useState("");
+  const [image, setImage] = useState("");
+
+  const [hour, writeHour] = useState("");
+  const [minute, writeMinute] = useState("");
+  const [content, setContent] = useState("");
+  const [hashtag, setHashtag] = useState("");
+  const navigate = useNavigate();
+
   const getBoardDetail = async () => {
+    const axiosInstance = axios.create({
+      baseURL: "http://52.79.132.18:8443",
+    });
     try {
-      const boardData = await axios.get(
-        `/volunteer/get_volunteer_content?volunteerId=${id}`
+      const authToken = localStorage.getItem("access_token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      };
+      const data = await axiosInstance.get(
+        `/volunteer/get_volunteer_content?volunteerId=${id}`,
+        config
       );
-      setBoardData(boardData);
-      console.log(boardData);
+
+      setBoardData(data);
+
+      setTitle(data.data.title);
+      setWriter(data.data.writer);
+      setPlace(data.data.place);
+      //console.log(data.data.img);
+
+      const dataObject = new Date(data.data.writeTime);
+
+      writeHour(dataObject.getHours());
+      writeMinute(dataObject.getMinutes());
+      setContent(data.data.detailed);
+      setHashtag(data.data.hashtag);
+      setEncoded(data.data.img);
+      //console.log(encoded);
     } catch (e) {
       console.log(e);
     }
   };
+  console.log(encoded);
+
+  const onClickHandler = () => {
+    console.log("clicked");
+    navigate("/chat");
+  };
+
+  useEffect(() => {
+    getBoardDetail();
+  }, []);
+  useEffect(() => {
+    const decodedImage = new Image();
+    decodedImage.src = encoded;
+    decodedImage.onload = () => {
+      setImage(decodedImage.src);
+    };
+  }, [encoded]);
   return (
     <div className="grow flex flex-col items-center">
       <div className="flex flex-col items-start">
         <div className="flex items-end">
-          <div className="text-4xl pt-24 pb-8 font-semibold text-bdblack">
-            광교관에서 성호관까지
+          <div className="text-4xl pt-8 pb-8 font-semibold text-bdblack">
+            {title}
           </div>
           <button className="items-end pl-64 hover:cursor-pointer">
-            <img src={btnimg} />
+            <img src={btnimg} onClick={onClickHandler} />
           </button>
         </div>
         <div id="content header" className="flex items-end ">
           <div className="flex">
             <div id="user info" className="grid grid-flow-rows">
-              <div className="font-semibold text-base">김버들</div>
+              <div className="font-semibold text-base">{writer}</div>
               <div className="flex">
                 <div className="flex text-sm pb-6 gap-3">
-                  <div className="text-sm">광교관</div>
-                  <div className="">12:56</div>
+                  <div className="text-sm">{place}</div>
+                  <div className="">
+                    {hour} : {minute}
+                  </div>
                 </div>
               </div>
             </div>
@@ -49,17 +104,17 @@ function DetailBoardPage() {
         </div>
         <div id="content" className="text-lg">
           <div id="article" className="pb-">
-            이동해주실 분 구합니다. 현재 광교관 계단 앞에서 기다리고 있습니다.
+            {content}
           </div>
           <div>
-            <img src={ImgPlaceHolder} className="pt-6" />
+            <img src={image || ImgPlaceHolder} className="pt-6" />
           </div>
         </div>
         <div id="bottom_content" className="items-end flex py-3">
           <img src={PlacePin} />
-          <div>경기도 수원시 영통구 광교호수공원로 80</div>
+          <div>{place}</div>
         </div>
-        <BelowBtn name={"이동봉사"} />
+        <BelowBtn name={hashtag} />
         <div className="py-4">
           <ZimBtn />
         </div>

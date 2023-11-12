@@ -5,9 +5,11 @@ import { useState } from "react";
 import ImgBox from "./Component/ImgBox";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import cameraIcon from "../WriteBoardPage/Component/ImgBox/icon/ic.png";
+import { object } from "prop-types";
 function WriteBoardPage() {
-  const [image, setImgSrc] = useState(null);
+  const [image, setImage] = useState(null);
+  const [imgPreview, setImgPreview] = useState("");
   const [meetTime, setMeetTime] = useState(null);
   const [placeComment, setPlaceComment] = useState("");
   const [costTime, setCostTime] = useState(null);
@@ -36,36 +38,56 @@ function WriteBoardPage() {
       setCategoryName("기타");
     }
   };
-  const onUpload = (e) => {
+  const onUpload = async (e) => {
+    e.preventDefault();
+
     const file = e.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
 
-    return new Promise((resolve) => {
-      reader.onloadend = (e) => {
-        setImgSrc(reader.result || null);
-        resolve();
-      };
-    });
+    //setImage(reader);
+    const objectUrl = URL.createObjectURL(file);
+    setImgPreview(objectUrl);
+
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+
+    if (file) {
+      const data = reader.readAsDataURL(file);
+      setImage(data);
+    }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const writer = localStorage.getItem("schoolNum");
+
+    const data = {
+      writer: writer,
+      title: title,
+      detailed: content,
+      hashtag: categoryName,
+      img: image,
+      whenVol: meetTime,
+      place: placeComment,
+      volTime: costTime,
+    };
 
     console.log("clicked");
     console.log(writer);
     // localStorage.getItem("")
 
-    const body = {
-      writer: writer,
-      title: title,
-      detailed: content,
-      hashtag: categoryName,
-      img: "HTTPS",
-      whenVol: meetTime,
-      place: placeComment,
-      volTime: costTime,
-    };
+    // const info = {
+    //   writer: writer,
+    //   title: title,
+    //   detailed: content,
+    //   hashtag: categoryName,
+    //   img: image,
+    //   whenVol: meetTime,
+    //   place: placeComment,
+    //   volTime: costTime,
+    // };
+
     //console.log(body);
     const axiosInstance = axios.create({
       baseURL: "http://52.79.132.18:8443",
@@ -80,7 +102,7 @@ function WriteBoardPage() {
         },
       };
       await axiosInstance
-        .post("/volunteer/register_vol", body, config)
+        .post("/volunteer/register_vol", data, config)
         .then((response) => {
           console.log(response);
           navigate("/main");
@@ -92,7 +114,7 @@ function WriteBoardPage() {
 
   return (
     <div className="">
-      <form onSubmit={handleSubmit}>
+      <form type="submit" onSubmit={handleSubmit}>
         <div className=" md:px-56">
           <div className="text-main font-semibold text-xl my-4">카테고리</div>
           <div className="mb-10">
@@ -181,14 +203,9 @@ function WriteBoardPage() {
               <div className="text-main font-semibold text-xl mt-4">사진</div>
               <div className="text-blue-600 mt-5">* 선택사항</div>
             </div>
-            <input
-              accept="image/*"
-              multiple
-              type="file"
-              onChange={(e) => onUpload(e)}
-            />
+            <input type="file" onChange={onUpload} />
             <div className="">
-              <ImgBox />
+              <ImgBox cameraIcon={imgPreview || cameraIcon} />
             </div>
           </div>
           <div id="날짜" className="pt-4">

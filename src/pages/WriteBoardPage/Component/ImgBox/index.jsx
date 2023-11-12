@@ -1,10 +1,9 @@
 import React from "react";
-import cameraIcon from "./icon/ic.png";
-function ImgBox() {
+function ImgBox({ cameraIcon }) {
   return (
-    <div className="">
-      <div className="bg-slate-300 p-16 w-40 h-40 mt-3">
-        <img src={cameraIcon}></img>
+    <div className=" w-80 h-40 ">
+      <div className="p-16mt-3">
+        <img src={cameraIcon} className="w-40"></img>
       </div>
     </div>
   );
