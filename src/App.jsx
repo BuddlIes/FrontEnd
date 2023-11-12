@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import Modal from "react-modal";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 // import "./App.css";
@@ -12,6 +13,7 @@ import DetailBoardPage from "./pages/DetailBoardPage";
 import WriteBoardPage from "./pages/WriteBoardPage";
 import NFTPage from "./pages/NFTPage";
 import ChatPage from "./pages/ChatPage";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
           <Route path="/Signup" element={<SignupPage />} />
           <Route path="/NFT" element={<NFTPage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Route>
       </Routes>
     </div>
