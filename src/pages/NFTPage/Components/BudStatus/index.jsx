@@ -1,6 +1,6 @@
+// 스탬프 개수 확인
 import React, { useState, useEffect } from "react";
-//import axios from "axios";
-//import { useNavigate } from "react-router";
+import axios from "axios";
 
 function BudStatus() {
   const [stampNum, setStampNum] = useState(0);
@@ -9,23 +9,14 @@ function BudStatus() {
     console.log("stampNum:", stampNum);
   }, [stampNum]);
 
-  const stampCounter = async (e) => {
-    //const axiosInstance = axios.create({
-    //  baseURL: "http://52.79.132.18:8443",
-    //});
+  const stampCounter = async () => {
+    const url = "http://52.79.132.18:8443/join";
     try {
-      setStampNum(stampNum + 1);
-     // const response = await axiosInstance.get("/stamp");
-     // console.log(response);
-
-     //JWT 공부하고 token에서 데이터 추출
-     //참고:
-     //const authToken = response.data.data.token;
-     //console.log(authToken);
-     //localStorage.getItem("access_token");
-
+      const response = await axios.get(url);
+      console.log("유저 DB 연결 성공");
+      setStampNum(response.data.user_number);
     } catch (error) {
-      console.error("오류", error);
+      console.log(error);
     }
   };
 
@@ -44,7 +35,10 @@ function BudStatus() {
         </div>
         <div className="text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5">
           나의 스탬프는 현재{" "}
-          <span style={{ color: "#749C03" }} onClick={(e) => stampCounter(e.target.value)}>{stampNum}</span>개 입니다.
+          <span style={{ color: "#749C03" }} onClick={stampCounter}>
+            {stampNum}
+          </span>
+          개 입니다.
         </div>
       </div>
     </div>
