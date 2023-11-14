@@ -16,11 +16,14 @@
     "@stomp/stompjs": "^7.0.0",
     "axios": "^1.6.0",
     "base-64": "^1.0.0",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.16.0",
     "socket.io-client": "^4.7.2",
+    "socketjs-client": "^1.0.2",
+    "sockjs-client": "^1.5.1",
     "ws": "^8.14.2"
   },
   "devDependencies": {
