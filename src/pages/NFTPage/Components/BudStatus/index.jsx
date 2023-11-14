@@ -1,31 +1,25 @@
-//사용자의 현재 스탬프 개수 확인
-import React, { useEffect, useState } from "react";
+// 스탬프 개수 확인
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
 
 function BudStatus() {
   const [stampNum, setStampNum] = useState(0);
-  const stampCounter = async (e) => {
-    e.preventDefault();
 
-    const axiosInstance = axios.create({
-      baseURL: "http://52.79.132.18:8443",
-    });
+  useEffect(() => {
+    console.log("stampNum:", stampNum);
+  }, [stampNum]);
+
+  const stampCounter = async () => {
+    const url = "http://52.79.132.18:8443/join";
     try {
-      console.log("a");
-      e.preventDefault();
-
-      const response = await axiosInstance.get("");
-      console.log(response);
-
-      const authToken = response.data.data.token;
-      console.log(authToken);
-      localStorage.getItem("access");
-      
+      const response = await axios.get(url);
+      console.log("유저 DB 연결 성공");
+      setStampNum(response.data.user_number);
     } catch (error) {
-      console.error("오류", error);
+      console.log(error);
     }
   };
+
   return (
     <div>
       <div className="max-w-2xl">
@@ -41,7 +35,10 @@ function BudStatus() {
         </div>
         <div className="text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5">
           나의 스탬프는 현재{" "}
-          <span style={{ color: "#749C03" }}>N</span>개 입니다.
+          <span style={{ color: "#749C03" }} onClick={stampCounter}>
+            {stampNum}
+          </span>
+          개 입니다.
         </div>
       </div>
     </div>
