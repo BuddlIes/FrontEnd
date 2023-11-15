@@ -6,8 +6,8 @@ function BudStatus() {
   const [stampNum, setStampNum] = useState(0);
 
   useEffect(() => {
-    console.log("stampNum:", stampNum);
-  }, [stampNum]);
+    stampCounter();
+  }, []);
 
   const stampCounter = async () => {
     const url = "http://52.79.132.18:8443/join";
