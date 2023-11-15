@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import BuddleIcon from "./Icon/Rectangle.svg";
 import ChatIcon from "./Icon/ChatIcon.svg";
 import MypageIcon from "./Icon/MypageIcon.svg";
+import Login from "./Icon/square.and.pencil.svg";
 
 function Header() {
   const navigation = useNavigate();
@@ -51,6 +52,7 @@ function Header() {
           <div className="">
             <Link to="/login">
               <div className="flex gap-2">
+                <img src={Login} />
                 <div className="text-sm font-semibold text-gray05 pl-3 hover:text-main">
                   log in
                 </div>
