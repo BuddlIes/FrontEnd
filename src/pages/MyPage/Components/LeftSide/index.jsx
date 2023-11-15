@@ -14,11 +14,8 @@ function LeftSide() {
             <Link to="/mypage/VolHistory" className="w-72 h-12 border border-[#EFEFE4] p-3 text-base font-semibold text-[#161718]">
                 내 봉사 내역
             </Link>
-            <Link to="/mypage/StampList" className="w-72 h-12 border border-[#EFEFE4] p-3 text-base font-semibold text-[#161718]">
-                현재 스탬프 내역
-            </Link>
-            <Link to="/mypage/VolReview" className="w-72 h-12 border border-[#EFEFE4] rounded-b-lg p-3 text-base font-semibold text-[#161718]">
-                봉사 활동 후기 확인
+            <Link to="/mypage/StampPage" className="w-72 h-12 border border-[#EFEFE4] p-3 text-base font-semibold text-[#161718]">
+                스탬프 전체 확인
             </Link>
         </div>
     );

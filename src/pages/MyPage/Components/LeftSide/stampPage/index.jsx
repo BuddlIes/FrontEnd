@@ -1,12 +1,12 @@
 // 현재 스탬프 내역
 import React from "react";
 
-function StampList() {
+function StampPage() {
     return (
         <div>
-            <div>현재 스탬프 내역</div>
+            <div>스탬프 페이지</div>
         </div>
     );
 }
 
-export default StampList;
+export default StampPage;

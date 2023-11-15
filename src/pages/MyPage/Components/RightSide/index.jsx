@@ -1,18 +1,21 @@
 //RightSide
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import GaugeChart from "react-gauge-chart";
 
 function RightSide() {
   const [Voltime, setVoltime] = useState(0);
   const [Nickname, getNickname] = useState("");
-  const studentId = getStudentId(); // 사용자 학번 user.student.id / 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
+  const studentId = "202020001"; // getStudentId(); // 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
+  const temperature = 0.75; //
 
   useEffect(() => {
     VolunteerTime();
     VolNickname();
   }, []);
 
-  const getStudentId = async () => {
+  {
+    /*const getStudentId = async () => {
     const axiosInstance = axios.create({
       baseURL: "http://52.79.132.18:8443",
     });
@@ -33,7 +36,8 @@ function RightSide() {
     } catch (e) {
       console.log(e);
     }
-  };
+  };*/
+  }
 
   const VolunteerTime = async () => {
     const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
@@ -53,10 +57,9 @@ function RightSide() {
 
     try {
       const response = await axios.get(url);
-      console.log("닉네임 연동 성공");
-      getNickname(response.data.nickname);
-      console.log(Nickname);
-      console.log(response.data.nickname);
+      getNickname(response.data.userNickname);
+      console.log(response.data);
+      console.log("닉네임: ", response.data.userNickname);
     } catch (error) {
       console.log("에러 발생:", error);
     }
@@ -68,7 +71,7 @@ function RightSide() {
         한 눈에 보는 <span className="text-[#749C03]">버들</span>
       </div>
       <div className="flex flex-row mr-8 gap-3 mt-12">
-        <div className="w-1/2 h-36 border border-[#D6DBDE] rounded-lg py-6 px-5">
+        <div className="w-1/3 h-36 border border-[#D6DBDE] rounded-lg py-6 px-5">
           <div className="text-lg font-semibold mb-2 text-[#161718]">
             나의 봉사 시간
           </div>
@@ -76,7 +79,7 @@ function RightSide() {
             <span className="text-[#749C03] text-5xl">{Voltime}</span> 시간
           </div>
         </div>
-        <div className="w-1/2 h-36 border border-[#D6DBDE] rounded-lg py-6 px-5">
+        <div className="w-1/3 h-36 border border-[#D6DBDE] rounded-lg py-6 px-5">
           <div className="text-lg font-semibold mb-2 text-[#161718]">
             나의 스탬프 개수
           </div>
@@ -84,9 +87,26 @@ function RightSide() {
             <span className="text-[#749C03] text-5xl">N</span> 개
           </div>
         </div>
+        <div className="w-1/3 h-36 border border-[#D6DBDE] rounded-lg py-6 px-5">
+          <div className="text-lg font-semibold mb-2 text-[#161718]">
+            나의 버들 온도
+          </div>
+          <div className="text-2xl font-bold text-right text-[#749C03] mb-3">
+            36.5°C
+          </div>
+          <div className="relative pt-1">
+            <div className="flex h-2 mb-4 overflow-hidden text-xs bg-[#F4F4F4] rounded">
+              <div
+                style={{ width: `${temperature * 100}%` }}
+                className="shadow-none flex flex-col whitespace-nowrap justify-center bg-[#749C03]"
+              ></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="h-12 mt-8 mr-8 bg-[#EFEFE4] text-2xl font-bold px-5 py-1.5 text-[#36383B]">
-        <span className="text-[#aaaaaa]">{/*{Nickname}*/}제가 보이시나요..?</span> 님이 보유하고 계신 <span className="text-[#749C03]">NFT</span> 입니다.
+      <div className="h-12 mt-12 mr-8 bg-[#EFEFE4] text-2xl font-bold px-5 py-1.5 text-[#36383B]">
+        <span className="text-[#749C03] font-extrabold">{Nickname}</span> 님이
+        보유하고 계신 <span className="text-[#749C03]">NFT</span> 입니다.
       </div>
     </div>
   );
