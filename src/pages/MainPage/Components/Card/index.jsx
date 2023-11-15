@@ -25,7 +25,7 @@ function Card({ image, hashtag, title, location, time, id }) {
 
   return (
     <div className=" h-44 w-80 pb-12">
-      <div className="border">
+      <div className="">
         <img src={image} className=" h-44" />
       </div>
       <div id="card below" className="">
