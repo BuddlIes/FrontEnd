@@ -4,21 +4,37 @@ import axios from "axios";
 
 function RightSide() {
   const [Voltime, setVoltime] = useState(0);
+  const [Nickname, getNickname] = useState("");
+  const studentId = "202020001"; // 사용자 학번
 
   useEffect(() => {
     VolunteerTime();
+    VolNickname();
   }, []);
 
   const VolunteerTime = async () => {
-    const studentId = "202020001"; // 사용자 학번
     const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
 
     try {
       const response = await axios.get(url);
-      console.log("연동 성공");
+      console.log("봉사 시간 연동 성공");
       setVoltime(response.data.totalVolunteerTime);
       console.log(Voltime);
       console.log(response.data.totalVolunteerTime);
+    } catch (error) {
+      console.log("에러 발생:", error);
+    }
+  };
+
+  const VolNickname = async () => {
+    const url = `http://52.79.132.18:8443/join/=${studentId}`;
+
+    try {
+      const response = await axios.get(url);
+      console.log("닉네임 연동 성공");
+      getNickname(response.data.nickname);
+      console.log(Nickname);
+      console.log(response.data.nickname);
     } catch (error) {
       console.log("에러 발생:", error);
     }
@@ -48,7 +64,7 @@ function RightSide() {
         </div>
       </div>
       <div className="h-12 mt-8 mr-8 bg-[#EFEFE4] text-2xl font-bold px-5 py-1.5 text-[#36383B]">
-        '닉네임' 님이 보유하고 계신 <span className="text-[#749C03]">NFT</span>입니다.
+        <span>{Nickname}</span> 님이 보유하고 계신 <span className="text-[#749C03]">NFT</span> 입니다.
       </div>
     </div>
   );
