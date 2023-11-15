@@ -17,8 +17,9 @@ function RightSide() {
   const authToken = localStorage.getItem("access_token");
 
   const connect = () => {
+    console.log("connecting...");
     client.current = new StompJs.Client({
-      brokerURL: "ws://52.79.132.18:8443/ws-stomp",
+      brokerURL: "ws://52.79.132.18:8443/ws-stomp/websocket",
 
       connectHeaders: {
         "auth-token": "spring-chat-auth-token",
@@ -28,7 +29,13 @@ function RightSide() {
       heartbeatIncoming: 4000,
       heartbeatOutgoing: 4000,
       onConnect: () => {
+        console.log("success");
         subscribe();
+      },
+      onStompError: (frame) => {
+        console.log("Stomp error:" + frame.headers["message"]);
+        console.log("Stomp error:" + frame.body);
+        console.error("An error occurred during WebSocket connection.");
       },
     });
     client.current.activate();
