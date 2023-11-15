@@ -5,29 +5,51 @@ import axios from "axios";
 function RightSide() {
   const [Voltime, setVoltime] = useState(0);
   const [Nickname, getNickname] = useState("");
-  const studentId = "202020001"; // 사용자 학번
+  const studentId = getStudentId(); // 사용자 학번 user.student.id / 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
 
   useEffect(() => {
     VolunteerTime();
     VolNickname();
   }, []);
 
+  const getStudentId = async () => {
+    const axiosInstance = axios.create({
+      baseURL: "http://52.79.132.18:8443",
+    });
+    try {
+      const authToken = localStorage.getItem("access_token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      };
+      const data = await axiosInstance.get(
+        `/volunteer/get_volunteer_content?volunteerId=`, // 수정필요 rquest: token , response: user info
+        config
+      );
+
+      return data.data.studentId; // db에 있는 key값 확인해서 studentId 수정
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const VolunteerTime = async () => {
     const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
 
     try {
       const response = await axios.get(url);
-      console.log("봉사 시간 연동 성공");
-      setVoltime(response.data.totalVolunteerTime);
-      console.log(Voltime);
-      console.log(response.data.totalVolunteerTime);
+      //setVoltime(response.data.completedVolList[0].volTime); // 0 = user_index 게시글 하나씩 봉사시간
+      setVoltime(response.data.totalVolunteerTime); //게시글 기준 전체 봉사 시간
+      console.log("총 봉사시간: ", response.data.totalVolunteerTime);
     } catch (error) {
       console.log("에러 발생:", error);
     }
   };
 
   const VolNickname = async () => {
-    const url = `http://52.79.132.18:8443/join/=${studentId}`;
+    const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
 
     try {
       const response = await axios.get(url);
@@ -64,7 +86,7 @@ function RightSide() {
         </div>
       </div>
       <div className="h-12 mt-8 mr-8 bg-[#EFEFE4] text-2xl font-bold px-5 py-1.5 text-[#36383B]">
-        <span>{Nickname}</span> 님이 보유하고 계신 <span className="text-[#749C03]">NFT</span> 입니다.
+        <span className="text-[#aaaaaa]">{/*{Nickname}*/}제가 보이시나요..?</span> 님이 보유하고 계신 <span className="text-[#749C03]">NFT</span> 입니다.
       </div>
     </div>
   );

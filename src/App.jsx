@@ -14,6 +14,9 @@ import WriteBoardPage from "./pages/WriteBoardPage";
 import NFTPage from "./pages/NFTPage";
 import ChatPage from "./pages/ChatPage";
 import MyPage from "./pages/MyPage";
+import StampList from "./pages/MyPage/Components/LeftSide/stampList";
+import VolHistory from "./pages/MyPage/Components/LeftSide/VolHistory";
+import VolReview from "./pages/MyPage/Components/LeftSide/VolReview";
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
           <Route path="/NFT" element={<NFTPage />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/mypage/StampList" element={<StampList />} />
+          <Route path="/mypage/VolHistory" element={<VolHistory />} />
+          <Route path="/mypage/VolReview" element={<VolReview />} />
         </Route>
       </Routes>
     </div>
