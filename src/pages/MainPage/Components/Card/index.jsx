@@ -4,11 +4,12 @@ import SmallLeaf from "../../../../assets/SmallLeaf.png";
 import { Navigate, useNavigate, useNavigation } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import defaultImg from "../../Components/Card/default.svg";
 // import { GET } from "../../../../utils/axios";
 function Card({ image, hashtag, title, location, time, id }) {
   const navigate = useNavigate();
-  console.log(image);
-  console.log(hashtag);
+  // console.log(image);
+  // console.log(hashtag);
   const onClickHandler = (e) => {
     console.log(`${id}`);
     // GET(`volunteer/get_volunteer_list?hashtag/${id}`, true);
@@ -26,7 +27,7 @@ function Card({ image, hashtag, title, location, time, id }) {
   return (
     <div className=" h-44 w-80 pb-12">
       <div className="">
-        <img src={image} className=" h-44" />
+        <img src={image || defaultImg} className=" h-44" />
       </div>
       <div id="card below" className="">
         <div className="pt-4">

@@ -7,6 +7,7 @@ export default {
         main: "#749C03",
         home: "#B4D752A8",
         bdblack: "#161718",
+        green01: "#9FC700",
         green04: "#5D6247",
         gray03: "#C7CCD0",
         gray05: "#8A8F94",

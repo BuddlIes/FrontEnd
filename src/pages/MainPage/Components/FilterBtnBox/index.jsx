@@ -1,13 +1,9 @@
 import React from "react";
 import FilterBtn from "../../Atoms/FilterBtn";
 import { useState } from "react";
-function FilterBtnBox() {
+function FilterBtnBox({ clickedItem, setClicked }) {
   const BtnList = ["전체", "이동봉사", "대필", "물품요청", "기타"];
-  const [clickedItem, setClicked] = useState([false, false, false, false]);
-  const changeTag = (name) => {
-    setClicked("");
-    setClicked(name);
-  };
+
   return (
     <div className="flex gap-2 pb-4">
       <FilterBtn

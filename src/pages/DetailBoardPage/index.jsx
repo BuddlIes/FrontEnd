@@ -45,7 +45,6 @@ function DetailBoardPage() {
       setTitle(data.data.title);
       setWriter(data.data.writer);
       setPlace(data.data.place);
-      //console.log(data.data.img);
 
       const dataObject = new Date(data.data.writeTime);
 
@@ -54,16 +53,14 @@ function DetailBoardPage() {
       setContent(data.data.detailed);
       setHashtag(data.data.hashtag);
       setEncoded(data.data.img);
-      //console.log(encoded);
     } catch (e) {
       console.log(e);
     }
   };
-  console.log(encoded);
 
   const onClickHandler = () => {
     console.log("clicked");
-    navigate("/chat");
+    navigate(`/chat/${id}`);
   };
 
   useEffect(() => {
