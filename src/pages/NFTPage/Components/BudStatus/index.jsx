@@ -3,22 +3,25 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function BudStatus() {
-  const [stampNum, setStampNum] = useState(0);
+  const [StampNum, getStampNum] = useState(0);
+  const studentId = "202020797"; // getStudentId(); // 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
 
   useEffect(() => {
-    stampCounter();
+    StampCounter();
   }, []);
 
-  const stampCounter = async () => {
-    const url = "http://52.79.132.18:8443/join";
+  const StampCounter = async () => {
+    const url = `http://52.79.132.18:8443/stamp/get_stamp_count?user_number=${studentId}`;
+
     try {
       const response = await axios.get(url);
-      console.log("유저 DB 연결 성공");
-      setStampNum(response.data.user_number);
+      getStampNum(response.data);
+      console.log("스탬프 개수: ", response.data);
     } catch (error) {
-      console.log(error);
+      console.log("에러 발생:", error);
     }
   };
+
 
   return (
     <div>
@@ -35,8 +38,8 @@ function BudStatus() {
         </div>
         <div className="text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5">
           나의 스탬프는 현재{" "}
-          <span style={{ color: "#749C03" }} onClick={stampCounter}>
-            {stampNum}
+          <span style={{ color: "#749C03" }}>
+          {StampNum}
           </span>
           개 입니다.
         </div>

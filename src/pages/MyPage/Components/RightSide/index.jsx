@@ -1,14 +1,15 @@
 //RightSide
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import GaugeChart from "react-gauge-chart";
-import Modal from "react-modal"
+//import GaugeChart from "react-gauge-chart";
+import Modal from "react-modal";
 
 function RightSide() {
   const [Voltime, setVoltime] = useState(0);
   const [Nickname, getNickname] = useState("");
+  const [StampNum, getStampNum] = useState(0);
+  const [temp, getTemp] = useState(0);
   const studentId = "202020797"; // getStudentId(); // 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
-  const temperature = 0.5;
   const [isYellowModalOpen, setIsYellowModalOpen] = useState(false);
   const [isGreenModalOpen, setIsGreenModalOpen] = useState(false);
   const [isRedModalOpen, setIsRedModalOpen] = useState(false);
@@ -40,6 +41,8 @@ function RightSide() {
   useEffect(() => {
     VolunteerTime();
     VolNickname();
+    StampCounter();
+    VolTemp();
   }, []);
 
   {
@@ -93,6 +96,42 @@ function RightSide() {
     }
   };
 
+  const StampCounter = async () => {
+    const url = `http://52.79.132.18:8443/stamp/get_stamp_count?user_number=${studentId}`;
+
+    try {
+      const response = await axios.get(url);
+      getStampNum(response.data);
+      console.log("스탬프 개수: ", response.data);
+    } catch (error) {
+      console.log("에러 발생:", error);
+    }
+  };
+
+  {/*const VolTemp = async () => { //성하가 제작한 API 명세서 : 배포 안된 상황
+    const url = `http://52.79.132.18:8443/get_temperature?user_number=${studentId}`;
+
+    try {
+      const response = await axios.get(url);
+      getTemp(response.data);
+      console.log("버들 온도: ", response.data);
+    } catch (error) {
+      console.log("에러 발생:", error);
+    }
+  };*/}
+
+  const VolTemp = async () => { //지은언니가 관리하는 user_info에서 temperature 정보 get
+    const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
+
+    try {
+      const response = await axios.get(url);
+      getTemp(response.data.userTemperature);
+      console.log("버들 온도: ", response.data.userTemperature);
+    } catch (error) {
+      console.log("에러 발생:", error);
+    }
+  };
+
   return (
     <div className="w-full h-full mt-20">
       <div className="text-4xl font-semibold text-[#161718]">
@@ -112,20 +151,20 @@ function RightSide() {
             나의 스탬프 개수
           </div>
           <div className="text-lg font-semibold justify-center text-center items-center text-[#161718]">
-            <span className="text-[#749C03] text-5xl">N</span> 개
+            <span className="text-[#749C03] text-5xl">{StampNum}</span> 개
           </div>
         </div>
         <div className="w-1/3 h-36 border border-[#D6DBDE] rounded-lg py-6 px-5">
           <div className="text-lg font-semibold mb-2 text-[#161718]">
             나의 버들 온도
           </div>
-          <div className="text-3xl font-bold text-right text-[#749C03] mb-3">
-            36.5°C
+          <div className="text-lg font-bold text-right text-[#161718] mb-3">
+            <span className="text-3xl text-[#749C03]">{temp}</span> °C
           </div>
           <div className="relative pt-1">
             <div className="flex h-2 mb-4 overflow-hidden text-xs bg-[#F4F4F4] rounded">
               <div
-                style={{ width: `${temperature * 100}%` }}
+                style={{ width: `${temp + 20}%` }}
                 className="shadow-none flex flex-col whitespace-nowrap justify-center rounded bg-[#749C03] bg-gradient-to-r from-[#9FC700] to-[#F8A5A5]"
               ></div>
             </div>
@@ -138,7 +177,10 @@ function RightSide() {
       </div>
       <div className="flex flex-row items-center pt-8 pb-40">
         <div>
-          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4" onClick={openYellowModal}>
+          <div
+            className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
+            onClick={openYellowModal}
+          >
             <img src="/src/assets/nft1.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-[#161718] font-bold">
@@ -146,16 +188,22 @@ function RightSide() {
           </div>
         </div>
         <div>
-          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4" onClick={openGreenModal}>
-            <img src="/src/assets/nft2.png"/>
+          <div
+            className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
+            onClick={openGreenModal}
+          >
+            <img src="/src/assets/nft2.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-[#161718] font-bold">
             행운이
           </div>
         </div>
         <div>
-          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4" onClick={openRedModal}>
-            <img src="/src/assets/nft3.png"/>
+          <div
+            className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
+            onClick={openRedModal}
+          >
+            <img src="/src/assets/nft3.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-[#161718] font-bold">
             단풍이
@@ -171,26 +219,26 @@ function RightSide() {
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
-          <span className="text-[#ffd206]">은행이</span>와 함께라면?
+            <span className="text-[#ffd206]">은행이</span>와 함께라면?
           </h2>
           <h2 className="text-center text-lg font-semibold text-bdblack">
-            편의점 5% 할인권
+            편의점에서 할인이 가능해요!
           </h2>
           <h2 className="text-center text-base font-normal text-bdblack">
-            리워드를 받으시겠습니까?
+            'OpenSea'에서 확인 및 사용 가능합니다.
           </h2>
           <div className="flex justify-center">
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-[#FFF] text-[#8A8F94] rounded-lg hover:bg-[#D6DBDE] transition-all border border-[#ABB1B8]"
               onClick={closeYellowModal}
             >
-              취소
+              닫기
             </button>
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
-              onClick={closeYellowModal}
+              onClick={() => window.open("https://opensea.io/kr")}
             >
-              신청
+              바로 가기
             </button>
           </div>
         </div>
@@ -207,23 +255,23 @@ function RightSide() {
             <span className="text-[#8BC501]">행운이</span>와 함께라면?
           </h2>
           <h2 className="text-center text-lg font-semibold text-bdblack">
-            카페 할인권
+            카페에서 할인이 가능해요!
           </h2>
           <h2 className="text-center text-base font-normal text-bdblack">
-            리워드를 받으시겠습니까?
+            'OpenSea'에서 확인 및 사용 가능합니다.
           </h2>
           <div className="flex justify-center">
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-[#FFF] text-[#8A8F94] rounded-lg hover:bg-[#D6DBDE] transition-all border border-[#ABB1B8]"
               onClick={closeGreenModal}
             >
-              취소
+              닫기
             </button>
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
-              onClick={closeGreenModal}
+              onClick={() => window.open("https://opensea.io/kr")}
             >
-              신청
+              바로 가기
             </button>
           </div>
         </div>
@@ -237,26 +285,26 @@ function RightSide() {
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
-          <span className="text-[#ff821a]">단풍이</span>와 함께라면?
+            <span className="text-[#ff821a]">단풍이</span>와 함께라면?
           </h2>
           <h2 className="text-center text-lg font-semibold text-bdblack">
-            패스트푸드 5% 할인권
+            패스트푸드점에서 할인이 가능해요!
           </h2>
           <h2 className="text-center text-base font-normal text-bdblack">
-            리워드를 받으시겠습니까?
+            'OpenSea'에서 확인 및 사용 가능합니다.
           </h2>
           <div className="flex justify-center">
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-[#FFF] text-[#8A8F94] rounded-lg hover:bg-[#D6DBDE] transition-all border border-[#ABB1B8]"
               onClick={closeRedModal}
             >
-              취소
+              닫기
             </button>
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
-              onClick={closeRedModal}
+              onClick={() => window.open("https://opensea.io/kr")}
             >
-              신청
+              바로 가기
             </button>
           </div>
         </div>
