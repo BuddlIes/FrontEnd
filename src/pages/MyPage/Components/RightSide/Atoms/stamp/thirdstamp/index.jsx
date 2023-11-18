@@ -1,1 +1,0 @@
-//third stamp 15%
