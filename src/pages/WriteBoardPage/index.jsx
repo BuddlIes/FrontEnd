@@ -73,8 +73,8 @@ function WriteBoardPage() {
       volTime: costTime,
     };
 
-    console.log("clicked");
-    console.log(writer);
+    // console.log("clicked");
+    // console.log(writer);
     // localStorage.getItem("")
 
     // const info = {
@@ -95,7 +95,7 @@ function WriteBoardPage() {
     try {
       const authToken = localStorage.getItem("access_token");
 
-      console.log(localStorage.access_token);
+      //console.log(localStorage.access_token);
       const config = {
         headers: {
           Authorization: `Bearer ${authToken}`,

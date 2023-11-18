@@ -9,7 +9,7 @@ function FilterBtn(props) {
     <div className="">
       <div
         onClick={onClickHandler}
-        className={`rounded-3xl px-4 pt-1 pb-1 hover:cursor-pointer hover:bg-green-800
+        className={` rounded-3xl px-4 pt-1 pb-1 hover:cursor-pointer hover:bg-green-800
         ${
           clicked
             ? " text-white bg-green04"

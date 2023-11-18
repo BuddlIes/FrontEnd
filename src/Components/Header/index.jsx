@@ -20,16 +20,6 @@ function Header() {
         </div>
         <div className="flex gap-x-3 text-gray-500 text-sm  max-w-screen-xl  ">
           <div className="">
-            <Link to="/chat">
-              <div className="flex gap-2">
-                <img src={ChatIcon} />
-                <div className="text-sm font-semibold text-gray05 hover:text-main">
-                  chatting
-                </div>
-              </div>
-            </Link>
-          </div>
-          <div className="">
             <Link to="/NFT">
               <div className="flex gap-2">
                 <img src={BuddleIcon} className="w-4" />
