@@ -30,8 +30,32 @@ function Card({ image, hashtag, title, location, time, id, completed }) {
   const openYellowModal = () => {
     setIsYellowModalOpen(true);
   };
-  const closeYellowModal = () => {
-    setIsYellowModalOpen(false);
+  const closeYellowModal = async (e) => {
+    console.log(e.target.id);
+    if (e.target.id === "cancel") setIsYellowModalOpen(false);
+    else {
+      console.log(e.target.id);
+      /*const axiosInstance = axios.create({
+        baseURL: "http://52.79.132.18:8443",
+      });
+      const authToken = localStorage.getItem("access_token");
+      const writer = localStorage.getItem("schoolNum");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      };
+       const data={
+        "volunteerId":
+        "whoVol":"202020002"
+      }
+      const result = axiosInstance.post(
+        "/volunteer/when_vol_completed",
+        data,
+        config
+      );*/
+    }
   };
   return (
     <div className=" h-44 w-80 pb-12">
@@ -70,6 +94,7 @@ function Card({ image, hashtag, title, location, time, id, completed }) {
       </div>
       <Modal
         isOpen={isYellowModalOpen}
+        ariaHideApp={false}
         onRequestClose={closeYellowModal}
         contentLabel="Yellow Modal"
         overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
@@ -83,13 +108,15 @@ function Card({ image, hashtag, title, location, time, id, completed }) {
           <div className="flex justify-center pt-3">
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-[#FFF] text-[#8A8F94] rounded-lg hover:bg-[#D6DBDE] transition-all border border-[#ABB1B8]"
-              onClick={closeYellowModal}
+              onClick={(e) => closeYellowModal(e)}
+              id="cancel"
             >
               취소
             </button>
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
-              onClick={closeYellowModal}
+              onClick={(e) => closeYellowModal(e)}
+              id="complete"
             >
               완료하기
             </button>

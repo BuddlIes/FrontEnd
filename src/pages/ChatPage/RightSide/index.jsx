@@ -16,14 +16,14 @@ function RightSide() {
     connect();
     return () => disconnect();
   }, []);
-  const authToken = localStorage.getItem("schoolNum");
+
   const connect = () => {
     console.log("connecting...");
     client.current = new StompJs.Client({
       brokerURL: "ws://52.79.132.18:8443/ws-stomp/websocket",
 
       connectHeaders: {
-        "auth-token": authToken,
+        "auth-token": "spring-chat-auth-token",
       },
 
       reconnectDelay: 5000,
