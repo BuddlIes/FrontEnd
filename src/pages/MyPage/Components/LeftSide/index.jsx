@@ -15,7 +15,7 @@ function LeftSide() {
                 내 봉사 내역
             </Link>
             <Link to="/mypage/StampPage" className="w-72 h-12 border border-[#EFEFE4] p-3 text-base font-semibold text-[#161718]">
-                스탬프 전체 확인
+                스탬프 달성 현황
             </Link>
         </div>
     );

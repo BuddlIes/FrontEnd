@@ -13,7 +13,7 @@ function ThirdNFT() {
       <div className="flex items-center pt-8">
         <div>
           <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] border-dashed mx-4 filter grayscale">
-            <img src="/src/assets/버들 로고.png" />
+            <img src="/src/assets/nft1.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
             편의점
@@ -21,7 +21,7 @@ function ThirdNFT() {
         </div>
         <div>
           <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] border-dashed mx-4 filter grayscale">
-            <img src="/src/assets/버들 로고.png" />
+            <img src="/src/assets/nft2.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
             카페
@@ -29,7 +29,7 @@ function ThirdNFT() {
         </div>
         <div>
           <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] border-dashed mx-4 filter grayscale">
-            <img src="/src/assets/버들 로고.png" />
+            <img src="/src/assets/nft3.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
             패스트푸드

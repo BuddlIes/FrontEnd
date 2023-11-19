@@ -1,6 +1,7 @@
 // 스탬프 개수 확인
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function BudStatus() {
   const [StampNum, getStampNum] = useState(0);
@@ -22,7 +23,6 @@ function BudStatus() {
     }
   };
 
-
   return (
     <div>
       <div className="max-w-2xl">
@@ -31,17 +31,18 @@ function BudStatus() {
         </div>
         <div className="text-base text-left text-bdblack">
           버들에서 가치를 실현한 벗을 위해{" "}
-          <span style={{ color: "#749C03" }}>할인권</span>을 드려요!
+          <span className="text-[#749C03]">할인권</span>을 드려요!
         </div>
         <div className="text-base text-left text-bdblack pb-8">
-          여러 조건들을 충족시킨 후 다양한 리워드를 받아가세요.
+          스탬프 개수를 충족시킨 후 다양한{" "}
+          <span className="text-[#749C03]">NFT</span>를 발급받으세요.
         </div>
-        <div className="text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5">
-          나의 스탬프는 현재{" "}
-          <span style={{ color: "#749C03" }}>
-          {StampNum}
-          </span>
-          개 입니다.
+        <div className="flex justify-between items-center text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5">
+          <div>
+            나의 스탬프는 현재{" "}
+            <span className="text-[#749C03]">{StampNum}</span>개 입니다.
+          </div>
+          <Link to="/mypage/StampPage" className="text-end text-sm font-normal underline">더 보기</Link>
         </div>
       </div>
     </div>
