@@ -9,7 +9,7 @@ function RightSide() {
   const [Nickname, getNickname] = useState("");
   const [StampNum, getStampNum] = useState(0);
   const [temp, getTemp] = useState(0);
-  const studentId = "202020797"; // getStudentId(); // 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
+  const studentId = localStorage.getItem("schoolNum");
   const [isYellowModalOpen, setIsYellowModalOpen] = useState(false);
   const [isGreenModalOpen, setIsGreenModalOpen] = useState(false);
   const [isRedModalOpen, setIsRedModalOpen] = useState(false);
@@ -44,31 +44,6 @@ function RightSide() {
     StampCounter();
     VolTemp();
   }, []);
-
-  {
-    /*const getStudentId = async () => {
-    const axiosInstance = axios.create({
-      baseURL: "http://52.79.132.18:8443",
-    });
-    try {
-      const authToken = localStorage.getItem("access_token");
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      };
-      const data = await axiosInstance.get(
-        `/volunteer/get_volunteer_content?volunteerId=`, // 수정필요 rquest: token , response: user info
-        config
-      );
-
-      return data.data.studentId; // db에 있는 key값 확인해서 studentId 수정
-    } catch (e) {
-      console.log(e);
-    }
-  };*/
-  }
 
   const VolunteerTime = async () => {
     const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
@@ -108,22 +83,7 @@ function RightSide() {
     }
   };
 
-  {
-    /*const VolTemp = async () => { //성하가 제작한 API 명세서 : 배포 안된 상황
-    const url = `http://52.79.132.18:8443/get_temperature?user_number=${studentId}`;
-
-    try {
-      const response = await axios.get(url);
-      getTemp(response.data);
-      console.log("버들 온도: ", response.data);
-    } catch (error) {
-      console.log("에러 발생:", error);
-    }
-  };*/
-  }
-
   const VolTemp = async () => {
-    //지은언니가 관리하는 user_info에서 temperature 정보 get
     const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
 
     try {

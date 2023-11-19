@@ -5,7 +5,7 @@ import leaf from "../../../../../assets/스탬프.png";
 import Stamp from "./atoms/stamp";
 function StampPage() {
   const [StampNum, getStampNum] = useState(0);
-  const studentId = "202020797"; // getStudentId(); // 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
+  const studentId = localStorage.getItem("schoolNum");
 
   useEffect(() => {
     StampCounter();
@@ -18,6 +18,7 @@ function StampPage() {
       const response = await axios.get(url);
       getStampNum(response.data);
       console.log("스탬프 개수: ", response.data);
+      console.log("학번: ", localStorage.getItem("schoolNum"));
     } catch (error) {
       console.log("에러 발생:", error);
     }
