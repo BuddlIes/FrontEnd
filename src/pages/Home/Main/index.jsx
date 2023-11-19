@@ -9,10 +9,10 @@ import reward from "./src/reward.svg";
 function Main() {
   return (
     <div className="">
-      <div className=" max-w-full h-screen font-bold relative">
-        <div className="relative max-h-fit pt-24 bg-[#36383B] ">
+      <div className=" max-w-full max-h-full font-bold relative">
+        <div className="relative max-h-fit pt-28 bg-[#36383B] ">
           <div className="flex flex-col justify-center h-full text-center m-auto">
-            <div className="flex text-center justify-center mt-10">
+            <div className="flex text-center justify-center m-10">
               <div className="text-5xl text-main ">버들</div>
               <div className="text-5xl text-white">에서</div>
             </div>
@@ -20,7 +20,7 @@ function Main() {
               '벗'의 가치를 실현해보세요
             </div>
             <Link to="/login">
-              <button className="justify-center block m-auto my-12">
+              <button className="justify-center block m-auto my-24 animate-pulse">
                 <img src={startBtn} />
               </button>
             </Link>
