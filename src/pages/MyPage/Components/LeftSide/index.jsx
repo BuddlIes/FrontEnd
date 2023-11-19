@@ -30,7 +30,7 @@ function LeftSide() {
         className={`${
           selected === "history" ? "bg-[#9fc70033]" : ""
         } w-72 h-12 rounded-t-lg p-3 text-base font-semibold text-[#161718] border border-[#EFEFE4] text-left`}
-        onClick={(target) => onClickHandler(target)}
+        onClick={(e) => onClickHandler(e)}
       >
         내 봉사 내역
       </Link>
@@ -40,7 +40,7 @@ function LeftSide() {
         className={`${
           selected === 2 ? "bg-[#9fc70033]" : ""
         } w-72 h-12 border border-[#EFEFE4] p-3 text-base font-semibold text-[#161718]`}
-        onClick={(target) => onClickHandler(target)}
+        onClick={(e) => onClickHandler(e)}
       >
         스탬프 전체 확인
       </Link>

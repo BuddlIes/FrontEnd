@@ -51,7 +51,10 @@ function FirstNFT() {
           </div>
         </div>
         <div>
-          <div className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4" onClick={openGreenModal}>
+          <div
+            className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
+            onClick={openGreenModal}
+          >
             <img src="/src/assets/nft2.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
@@ -63,7 +66,7 @@ function FirstNFT() {
             className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
             onClick={openRedModal}
           >
-            <img src="/src/assets/nft3.png"/>
+            <img src="/src/assets/nft3.png" />
           </div>
           <div className="flex items-center justify-center pt-2 text-xl text-bdblack">
             패스트푸드
@@ -80,13 +83,13 @@ function FirstNFT() {
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
-          <span className="text-[#ffd206]">은행이</span>와 함께라면?
+            <span className="text-[#ffd206]">은행이</span>와 함께라면?
           </h2>
           <h2 className="text-center text-lg font-semibold text-bdblack">
             편의점 5% 할인권
           </h2>
           <h2 className="text-center text-base font-normal text-bdblack">
-            해당 NFT를  발급 받으시겠습니까?
+            해당 NFT를 발급 받으시겠습니까?
           </h2>
           <div className="flex justify-center">
             <button
@@ -119,7 +122,7 @@ function FirstNFT() {
             카페 할인권
           </h2>
           <h2 className="text-center text-base font-normal text-bdblack">
-          해당 NFT를  발급 받으시겠습니까?
+            해당 NFT를 발급 받으시겠습니까?
           </h2>
           <div className="flex justify-center">
             <button
@@ -146,13 +149,13 @@ function FirstNFT() {
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
-          <span className="text-[#ff821a]">단풍이</span>와 함께라면?
+            <span className="text-[#ff821a]">단풍이</span>와 함께라면?
           </h2>
           <h2 className="text-center text-lg font-semibold text-bdblack">
             패스트푸드 5% 할인권
           </h2>
           <h2 className="text-center text-base font-normal text-bdblack">
-          해당 NFT를  발급 받으시겠습니까?
+            해당 NFT를 발급 받으시겠습니까?
           </h2>
           <div className="flex justify-center">
             <button
