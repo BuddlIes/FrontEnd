@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../../MainPage/Components/Card";
 function RightSide() {
+  const getPost = () => {};
+
+  useEffect(() => {
+    getPost();
+  }, []);
   return (
     <div className="w-full h-full mt-20">
       <Card

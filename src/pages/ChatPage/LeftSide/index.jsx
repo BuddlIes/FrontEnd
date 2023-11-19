@@ -3,9 +3,7 @@ import React from "react";
 function LeftSide() {
   return (
     <div className="w-1/3">
-      <div className="w-full">
-        <div>사용자 리스트</div>
-      </div>
+      <div className="w-full"></div>
     </div>
   );
 }

@@ -176,6 +176,7 @@ function RightSide() {
       <Modal
         isOpen={isYellowModalOpen}
         onRequestClose={closeYellowModal}
+        ariaHideApp={false}
         contentLabel="Yellow Modal"
         overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
         className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
@@ -210,6 +211,7 @@ function RightSide() {
         isOpen={isGreenModalOpen}
         onRequestClose={closeGreenModal}
         contentLabel="Green Modal"
+        ariaHideApp={false}
         overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
         className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
       >
@@ -243,6 +245,7 @@ function RightSide() {
         isOpen={isRedModalOpen}
         onRequestClose={closeRedModal}
         contentLabel="Red Modal"
+        ariaHideApp={false}
         overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
         className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
       >
