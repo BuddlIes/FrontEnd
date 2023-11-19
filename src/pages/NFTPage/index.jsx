@@ -7,7 +7,11 @@ import ThirdNFT from "./Components/ThirdNFT";
 
 function NFTPage() {
   return (
+<<<<<<< HEAD
     <div className="w-full h-full flex flex-row">
+=======
+    <div className="w-full flex flex-row">
+>>>>>>> e1c14857a25cea83d6f27bc5a3c28b12e300e68f
       <div className="grow flex flex-col items-center">
         <div className="max-w-3xl mx-auto">
           <BudStatus />

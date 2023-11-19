@@ -15,8 +15,7 @@ import NFTPage from "./pages/NFTPage";
 import ChatPage from "./pages/ChatPage";
 import MyPage from "./pages/MyPage";
 import StampPage from "./pages/MyPage/Components/LeftSide/stampPage";
-import VolHistory from "./pages/MyPage/Components/LeftSide/VolHistory";
-
+import VolHistory from "./pages/VolHistory";
 function App() {
   return (
     <div className="w-full ">
