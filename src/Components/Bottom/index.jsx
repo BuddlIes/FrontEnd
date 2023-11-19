@@ -2,7 +2,7 @@ import React from "react";
 
 function Bottom() {
   return (
-    <div className="border-t bottom-0 bg-white w-full h-1/6 mb-1">
+    <div className="border-t bg-white w-full h-1/6 mb-1 mt-40">
       <div className="text-main text-xl  font-semibold pb-3 pt-3 flex-1">
         Buddle
       </div>
