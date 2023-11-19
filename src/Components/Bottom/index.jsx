@@ -2,13 +2,8 @@ import React from "react";
 
 function Bottom() {
   return (
-<<<<<<< HEAD
-    <div className="border-t bottom-0 bg-white w-full h-1/6 mb-1">
-      <div className="text-main text-xl font-semibold pb-3 pt-3 flex-1">
-=======
     <div className="border-t bg-white w-full h-1/6 mb-1 mt-40">
       <div className="text-main text-xl  font-semibold pb-3 pt-3 flex-1">
->>>>>>> e1c14857a25cea83d6f27bc5a3c28b12e300e68f
         Buddle
       </div>
       <div className="grid grid-cols-2 gap-10">
