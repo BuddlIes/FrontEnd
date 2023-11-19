@@ -63,7 +63,7 @@ function StampPage() {
               </div>
             </div>
             <div>
-              <div className="grid grid-flow-col grid-cols-5 py-8 border-b filter grayscale-0">
+              <div className={`${StampNum >= 1 ? 'grayscale' : ''} grid grid-flow-col grid-cols-5 py-8 border-b `}>
                 {" "}
                 {/*스탬프1~5*/}
                 <Stamp image={leaf} />
@@ -72,18 +72,18 @@ function StampPage() {
                 <Stamp image={leaf} />
                 <Stamp image={leaf} />
               </div>
-              <div className="grid grid-flow-col grid-cols-5 py-8 border-b filter grayscale-0">
+              <div className={`grid grid-flow-col grid-cols-5 py-8 border-b `}>
                 {" "}
                 {/*스탬프6~10*/}
-                <Stamp image={leaf} />
-                <div className="filter grayscale">
+                <div className={`${StampNum === 6 ? 'grayscale-0' : ''}`}>
                 <Stamp image={leaf} />
                 </div>
                 <Stamp image={leaf} />
                 <Stamp image={leaf} />
                 <Stamp image={leaf} />
+                <Stamp image={leaf} />
               </div>
-              <div className="grid grid-flow-col grid-cols-5 py-8 border-b filter grayscale-0 mb-36">
+              <div className={`${StampNum >= 1 ? 'grayscale' : ''} grid grid-flow-col grid-cols-5 py-8 border-b `}>
                 {" "}
                 {/*스탬프11~15*/}
                 <Stamp image={leaf} />
