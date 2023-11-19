@@ -89,16 +89,19 @@ function RightSide() {
 
       <div className="relative flex flex-wrap gap-32">
         {boardList.map(
-          (item) =>
+          (item, index) =>
             hashtag && (
-              <Card
-                image={item.img}
-                hashtag={item.hashtag}
-                title={item.title}
-                location={item.place}
-                time={item.whenVol}
-                id={item.volunteerId}
-              />
+              <div key={index}>
+                <Card
+                  image={item.img}
+                  hashtag={item.hashtag}
+                  title={item.title}
+                  location={item.place}
+                  time={item.whenVol}
+                  id={item.volunteerId}
+                  completed={false}
+                />
+              </div>
             )
         )}
       </div>

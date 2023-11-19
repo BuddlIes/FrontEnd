@@ -58,8 +58,29 @@ function DetailBoardPage() {
     }
   };
 
-  const onClickHandler = () => {
+  const onClickHandler = async () => {
+    const axiosInstance = axios.create({
+      baseURL: "http://52.79.132.18:8443",
+    });
     console.log("clicked");
+    const authToken = localStorage.getItem("access_token");
+    const schoolNum = localStorage.getItem("schoolNum");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    };
+    const body = {
+      volunteerId: id,
+      whoVol: schoolNum,
+    };
+    const data = await axiosInstance.post(
+      "/volunteer/when_vol_applied",
+      body,
+      config
+    );
+    console.log(data);
     navigate(`/chat/${id}`);
   };
 

@@ -108,7 +108,8 @@ function RightSide() {
     }
   };
 
-  {/*const VolTemp = async () => { //성하가 제작한 API 명세서 : 배포 안된 상황
+  {
+    /*const VolTemp = async () => { //성하가 제작한 API 명세서 : 배포 안된 상황
     const url = `http://52.79.132.18:8443/get_temperature?user_number=${studentId}`;
 
     try {
@@ -118,9 +119,11 @@ function RightSide() {
     } catch (error) {
       console.log("에러 발생:", error);
     }
-  };*/}
+  };*/
+  }
 
-  const VolTemp = async () => { //지은언니가 관리하는 user_info에서 temperature 정보 get
+  const VolTemp = async () => {
+    //지은언니가 관리하는 user_info에서 temperature 정보 get
     const url = `http://52.79.132.18:8443/volunteer/get_my_completed_volInfo?whoVol=${studentId}`;
 
     try {
