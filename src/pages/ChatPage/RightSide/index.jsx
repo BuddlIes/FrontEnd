@@ -11,12 +11,11 @@ function RightSide() {
   const client = useRef({});
   const [chatMessages, setChatMessages] = useState([]);
   const [message, setMessage] = useState("");
-
+  const [writer, setWriter] = useState("");
   useEffect(() => {
     connect();
     return () => disconnect();
   }, []);
-  const authToken = localStorage.getItem("access_token");
 
   const connect = () => {
     console.log("connecting...");
@@ -51,41 +50,50 @@ function RightSide() {
     client.current.subscribe(`/sub/chat/${ROOM_SEQ}`, ({ body }) => {
       setChatMessages((_chatMessages) => [..._chatMessages, JSON.parse(body)]);
     });
+    console.log(chatMessages);
+    console.log(JSON.parse(body));
   };
   const publish = (message) => {
     if (!client.current.connected) return;
+    const writer = localStorage.getItem("schoolNum");
+    console.log(writer);
+
     client.current.publish({
       destination: "/pub/chat",
       body: JSON.stringify({ roomSeq: ROOM_SEQ, message }),
     });
+
     setMessage("");
   };
   return (
     <div className="py-36 pl-11 w-full">
-      {chatMessages && chatMessages.length > 0 && (
-        <ul className="flex flex-col">
-          {chatMessages.map((_chatMessage, index) => (
-            <li
-              className="grid max-w-fit min-w-fit break-words text-white bg-green01 text-2xl px-3 text-center rounded-lg m-2 ml-auto"
-              key={index}
-            >
-              {_chatMessage.message}
-            </li>
-          ))}
-        </ul>
-      )}
-      <div className="flex gap-3">
-        <input
-          type={"text"}
-          placeholder={"메세지를 입력하세요"}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyPress={(e) => e.which === 13 && publish(message)}
-          className=" bg-[#EFEFE4] text-black rounded-xl h-12 w-1/3 placeholder: text-start pl-3"
-        />
-        <div className="">
-          <button onClick={() => publish(message)}>
-            <img src={sendIcon} className="w-8 pt-2" />
+      <div>
+        {chatMessages && chatMessages.length > 0 && (
+          <ul className="flex flex-col">
+            {chatMessages.map((_chatMessage, index) => (
+              <li
+                className="grid max-w-fit min-w-fit break-words text-white  bg-green01 text-2xl p-3 text-center rounded-full m-3 ml-auto font-light"
+                key={index}
+              >
+                {_chatMessage.message}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className=" flex gap-3 bottom-0 right-0 border-t justify-items-center pl-24">
+        <div className="w-full flex pt-5 right-0 bottom-0">
+          <input
+            type={"text"}
+            placeholder={"✍️ 메세지를 입력해주세요"}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyPress={(e) => e.which === 13 && publish(message)}
+            className="bg-[#EFEFE4] text-black rounded-full w-full h-16 placeholder:text-start placeholder:text-xl   pl-12  font-medium"
+          />
+          <button onClick={() => publish(message)} className="">
+            <img src={sendIcon} className="w-12" />
           </button>
         </div>
       </div>

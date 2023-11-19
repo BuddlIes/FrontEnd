@@ -25,10 +25,12 @@ function LoginPage() {
       console.log(response);
 
       const authToken = response.data.data.token;
+      const schoolNum = response.data.data.userNum;
 
       console.log(authToken);
 
       localStorage.setItem("access_token", authToken);
+      localStorage.setItem("schoolNum", schoolNum);
 
       navigate("/main");
     } catch (error) {
