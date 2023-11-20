@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import leaf from "../../../../../assets/스탬프.png";
 import Stamp from "./atoms/stamp";
+import LeftSide from "..";
+
 function StampPage() {
   const [StampNum, getStampNum] = useState(0);
   const studentId = localStorage.getItem("schoolNum");
@@ -26,6 +28,7 @@ function StampPage() {
 
   return (
     <div className="w-full h-full flex flex-row">
+      <LeftSide />
       <div className="grow flex flex-col items-center">
         <div className="max-w-3xl mx-auto">
           <div className="text-4xl text-left pt-36 pb-2.5 font-semibold text-bdblack">
@@ -63,7 +66,7 @@ function StampPage() {
               </div>
             </div>
             <div>
-              <div className={`${StampNum >= 1 ? 'grayscale' : ''} grid grid-flow-col grid-cols-5 py-8 border-b `}>
+              <div className={`${StampNum >= 1 ? 'grayscale' : ''} flex py-8 border-b `}>
                 {" "}
                 {/*스탬프1~5*/}
                 <Stamp image={leaf} />
@@ -72,7 +75,7 @@ function StampPage() {
                 <Stamp image={leaf} />
                 <Stamp image={leaf} />
               </div>
-              <div className={`grid grid-flow-col grid-cols-5 py-8 border-b `}>
+              <div className={`flex py-8 border-b `}>
                 {" "}
                 {/*스탬프6~10*/}
                 <div className={`${StampNum === 6 ? 'grayscale-0' : ''}`}>
@@ -83,7 +86,7 @@ function StampPage() {
                 <Stamp image={leaf} />
                 <Stamp image={leaf} />
               </div>
-              <div className={`${StampNum >= 1 ? 'grayscale' : ''} grid grid-flow-col grid-cols-5 py-8 border-b `}>
+              <div className={`${StampNum >= 1 ? 'grayscale' : ''} flex py-8 border-b `}>
                 {" "}
                 {/*스탬프11~15*/}
                 <Stamp image={leaf} />
