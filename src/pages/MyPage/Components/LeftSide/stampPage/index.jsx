@@ -25,6 +25,24 @@ function StampPage() {
       console.log("에러 발생:", error);
     }
   };
+  
+  const renderStamps = () => {
+    const stamps = [];
+    for (let i = 1; i <= StampNum; i++) {
+      stamps.push(
+        <Stamp
+          key={i}
+          image={leaf}
+          className={`${
+            i <= StampNum ? "grayscale-0" : "grayscale"
+          }`}
+        />
+      );
+    }
+    return stamps;
+  };
+
+  
 
   return (
     <div className="w-full h-full flex flex-row">
@@ -58,44 +76,14 @@ function StampPage() {
             모든 영역에서 1회씩 더 수행할 경우, 스탬프를 1개 더 드립니다!
             </div>
           </div>
-          <div className="box-border justify-center w-full ">
+          <div className="box-border justify-center w-full">
             <div className="flex flex-col">
-              <div className="max-w-full text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5">
+              <div className="max-w-full text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5 mb-4">
                 나의 스탬프는 현재{" "}
                 <span className="text-[#749C03]">{StampNum}</span>개 입니다.
               </div>
             </div>
-            <div>
-              <div className={`${StampNum >= 1 ? 'grayscale' : ''} flex py-8 border-b `}>
-                {" "}
-                {/*스탬프1~5*/}
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-              </div>
-              <div className={`flex py-8 border-b `}>
-                {" "}
-                {/*스탬프6~10*/}
-                <div className={`${StampNum === 6 ? 'grayscale-0' : ''}`}>
-                <Stamp image={leaf} />
-                </div>
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-              </div>
-              <div className={`${StampNum >= 1 ? 'grayscale' : ''} flex py-8 border-b `}>
-                {" "}
-                {/*스탬프11~15*/}
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-                <Stamp image={leaf} />
-              </div>
-            </div>
+            <div className="flex">{renderStamps()}</div>
           </div>
         </div>
       </div>
