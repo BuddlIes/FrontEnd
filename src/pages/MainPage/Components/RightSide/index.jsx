@@ -41,7 +41,7 @@ function RightSide() {
         `/volunteer/get_volunteer_list?hashtag=${hashtag}`,
         config
       );
-
+      console.log(result);
       setBoardList(result.data);
     } catch (e) {
       console.log(e);
@@ -99,7 +99,6 @@ function RightSide() {
                   location={item.place}
                   time={item.whenVol}
                   id={item.volunteerId}
-                  completed={false}
                 />
               </div>
             )

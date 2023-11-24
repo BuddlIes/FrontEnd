@@ -7,24 +7,26 @@ import { useEffect, useState } from "react";
 import defaultImg from "../../Components/Card/default.svg";
 import Modal from "react-modal";
 // import { GET } from "../../../../utils/axios";
-function Card({ image, hashtag, title, location, time, id, completed }) {
+function Card({
+  image,
+  hashtag,
+  title,
+  location,
+  time,
+  id,
+  completed,
+  volunteerId,
+}) {
   const navigate = useNavigate();
   const [isYellowModalOpen, setIsYellowModalOpen] = useState(false);
+  const [isCompleted, setCompleted] = useState(false);
 
   // console.log(image);
   // console.log(hashtag);
   const onClickHandler = (e) => {
     console.log("clicked");
     console.log(`${id}`);
-    // GET(`volunteer/get_volunteer_list?hashtag/${id}`, true);
-    // console.log(data);.
-    // axios
-    //   .get(
-    //     `http://52.79.132.18:8443/volunteer/get_volunteer_content?volunteerId=${id}`
-    //   )
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   });
+
     navigate(`/main/detailed/${id}`);
   };
   const openYellowModal = () => {
@@ -35,7 +37,8 @@ function Card({ image, hashtag, title, location, time, id, completed }) {
     if (e.target.id === "cancel") setIsYellowModalOpen(false);
     else {
       console.log(e.target.id);
-      /*const axiosInstance = axios.create({
+      console.log(volunteerId);
+      const axiosInstance = axios.create({
         baseURL: "http://52.79.132.18:8443",
       });
       const authToken = localStorage.getItem("access_token");
@@ -46,15 +49,19 @@ function Card({ image, hashtag, title, location, time, id, completed }) {
           Authorization: `Bearer ${authToken}`,
         },
       };
-       const data={
-        "volunteerId":
-        "whoVol":"202020002"
-      }
-      const result = axiosInstance.post(
+      const data = {
+        volunteerId: id,
+        whoVol: writer,
+      };
+      const result = await axiosInstance.post(
         "/volunteer/when_vol_completed",
         data,
         config
-      );*/
+      );
+      if (result) {
+        console.log("D");
+        setCompleted(true);
+      }
     }
   };
   return (

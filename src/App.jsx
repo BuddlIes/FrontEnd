@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Modal from "react-modal";
+//import Modal from "react-modal";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 // import "./App.css";
@@ -18,7 +18,7 @@ import StampPage from "./pages/MyPage/Components/LeftSide/stampPage";
 import VolHistory from "./pages/VolHistory";
 function App() {
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
