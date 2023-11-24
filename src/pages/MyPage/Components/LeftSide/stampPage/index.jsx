@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import leaf from "../../../../../assets/스탬프.png";
-import Stamp from "./atoms/stamp";
+import Stamp from "./atoms/Stamp";
 import LeftSide from "..";
 function StampPage() {
   const [StampNum, getStampNum] = useState(0);
