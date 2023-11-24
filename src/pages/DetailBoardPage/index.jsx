@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import btnimg from "./img/button.png";
-import ImgPlaceHolder from "./img/placeholder image.png";
+import ImgPlaceHolder from "./img/Placeholder.png";
 import PlacePin from "./img/PlacePin.png";
 import BelowBtn from "./Component/BelowBtn";
 import ZimBtn from "./Component/ZimBtn";
