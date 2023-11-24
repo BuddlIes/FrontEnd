@@ -51,18 +51,14 @@ function RightSide() {
       setChatMessages((_chatMessages) => [..._chatMessages, JSON.parse(body)]);
     });
     console.log(chatMessages);
-    console.log(JSON.parse(body));
   };
   const publish = (message) => {
     if (!client.current.connected) return;
-    const writer = localStorage.getItem("schoolNum");
-    console.log(writer);
 
     client.current.publish({
-      destination: "/pub/chat",
+      destination: "/pub/chat" + ROOM_SEQ,
       body: JSON.stringify({ roomSeq: ROOM_SEQ, message }),
     });
-
     setMessage("");
   };
   return (

@@ -6,7 +6,9 @@ import BelowBtn from "./Component/BelowBtn";
 import ZimBtn from "./Component/ZimBtn";
 import CommentBox from "./Component/CommentBox";
 import { useNavigate, useParams } from "react-router-dom";
+import ViewComment from "./Component/ViewComment";
 import axios from "axios";
+import Modal from "react-modal";
 import base64 from "base-64";
 function DetailBoardPage() {
   const [boardData, setBoardData] = useState({});
@@ -21,6 +23,7 @@ function DetailBoardPage() {
   const [minute, writeMinute] = useState("");
   const [content, setContent] = useState("");
   const [hashtag, setHashtag] = useState("");
+  const [isYellowModalOpen, setIsYellowModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const getBoardDetail = async () => {
@@ -57,6 +60,9 @@ function DetailBoardPage() {
       console.log(e);
     }
   };
+  const closeYellowModal = () => {
+    setIsYellowModalOpen(false);
+  };
 
   const onClickHandler = async () => {
     const axiosInstance = axios.create({
@@ -81,7 +87,11 @@ function DetailBoardPage() {
       config
     );
     console.log(data);
-    navigate(`/chat/${id}`);
+    //navigate(`/chat/${id}`);
+  };
+  const openYellowModal = () => {
+    console.log("hi");
+    setIsYellowModalOpen(true);
   };
 
   useEffect(() => {
@@ -102,7 +112,7 @@ function DetailBoardPage() {
             {title}
           </div>
           <button className="items-end pl-64 hover:cursor-pointer">
-            <img src={btnimg} onClick={onClickHandler} />
+            <img src={btnimg} onClick={openYellowModal} />
           </button>
         </div>
         <div id="content header" className="flex items-end ">
@@ -138,7 +148,42 @@ function DetailBoardPage() {
         </div>
         <hr className="w-full" />
         <CommentBox />
+        <div className="pt-6">
+          <ViewComment />
+        </div>
       </div>
+      <Modal
+        isOpen={isYellowModalOpen}
+        ariaHideApp={false}
+        onRequestClose={closeYellowModal}
+        contentLabel="Yellow Modal"
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h- rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+      >
+        {" "}
+        <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
+          <h2 className="mb-3"></h2>
+          <h2 className="text-center text-base font-normal pt-3 text-bdblack">
+            해당 봉사활동을 신청하시겠습니까?
+          </h2>
+          <div className="flex justify-center pt-3">
+            <button
+              className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-[#FFF] text-[#8A8F94] rounded-lg hover:bg-[#D6DBDE] transition-all border border-[#ABB1B8]"
+              onClick={(e) => closeYellowModal(e)}
+              id="cancel"
+            >
+              아니오
+            </button>
+            <button
+              className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
+              onClick={(e) => onClickHandler(e)}
+              id="complete"
+            >
+              신청하기
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

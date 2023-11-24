@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import leaf from "../../../../../assets/스탬프.png";
 import Stamp from "./atoms/stamp";
+import LeftSide from "..";
 function StampPage() {
   const [StampNum, getStampNum] = useState(0);
   const studentId = "202020797"; // getStudentId(); // 로컬스토리지에 토큰이 있으니까 토큰으로 유저 구분해서 해당 유저 정보에서 학번 가져오기
@@ -43,15 +44,20 @@ function StampPage() {
             부터 로그인, 댓글, 리뷰 등)을 하면 스탬프를 드립니다.
           </div>
           <div className="max-w-full text-bdblack text-base text-left text-bdblack bg-[#EFF5C4] px-5 py-1.5 rounded-lg mb-8">
-            <div className="pb-4">
-              Q. 스탬프는 어떻게 얻나요?
-            </div>
+            <div className="pb-4">Q. 스탬프는 어떻게 얻나요?</div>
             <div>
-              A. "<span className="text-[#749C03] font-semibold">버들 접속(로그인)</span> 1회 + <span className="text-[#749C03] font-semibold">댓글</span> 작성 1회 + <span className="text-[#749C03] font-semibold">봉사 완료</span> 1회 + <span className="text-[#749C03] font-semibold">리뷰 </span>
+              A. "
+              <span className="text-[#749C03] font-semibold">
+                버들 접속(로그인)
+              </span>{" "}
+              1회 + <span className="text-[#749C03] font-semibold">댓글</span>{" "}
+              작성 1회 +{" "}
+              <span className="text-[#749C03] font-semibold">봉사 완료</span>{" "}
+              1회 + <span className="text-[#749C03] font-semibold">리뷰 </span>
               작성 1회"시 스탬프 1개를 받을 수 있습니다.
             </div>
             <div>
-            모든 영역에서 1회씩 더 수행할 경우, 스탬프를 1개 더 드립니다!
+              모든 영역에서 1회씩 더 수행할 경우, 스탬프를 1개 더 드립니다!
             </div>
           </div>
           <div className="box-border justify-center w-full ">
