@@ -9,18 +9,19 @@ function BudStatus() {
 
   useEffect(() => {
     // 처음에 한 번 호출
-    updateStampCounter();
+    //updateStampCounter();
+    StampCounter();
 
     // 1초마다 스탬프 개수 업데이트
     const intervalId = setInterval(() => {
-      updateStampCounter();
+      StampCounter(); //updateStampCounter();
     }, 1000);
 
     // 컴포넌트가 언마운트되면 interval 제거
     return () => clearInterval(intervalId);
   }, []);
 
-  const updateStampCounter = async () => {
+  {/*const updateStampCounter = async () => {
     try {
       // 로컬 스토리지에서 StampNum 값을 가져옴
       const localStampNum = localStorage.getItem("StampNum");
@@ -37,6 +38,18 @@ function BudStatus() {
         setStampNum(response.data);
         console.log("스탬프 개수: ", response.data);
       }
+    } catch (error) {
+      console.log("에러 발생:", error);
+    }
+  };*/}
+
+  const StampCounter = async () => {
+    const url = `http://52.79.132.18:8443/stamp/get_stamp_count?user_number=${studentId}`;
+
+    try {
+      const response = await axios.get(url);
+      setStampNum(response.data);
+      console.log("스탬프 개수: ", response.data);
     } catch (error) {
       console.log("에러 발생:", error);
     }

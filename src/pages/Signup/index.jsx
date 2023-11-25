@@ -44,7 +44,7 @@ function SignupPage() {
             onSubmit={submitHandler}
           >
             <div className="text-4xl pt-24 pb-8 font-semibold text-bdblack text-center">
-              버들 회원가입
+              <span className="text-main">버들</span> 회원가입
             </div>
             <div id="이메일 입력" className="pb-6">
               <div className="text-lg font-bold text-[#161718] pb-3">
@@ -111,7 +111,7 @@ function SignupPage() {
             </div>
             <input
               type="text"
-              placeholder="ex. 202020202"
+              placeholder="OpenSea에서 발급 가능"
               style={{ color: "#161718" }}
               onChange={(e) => setNFT(e.target.value)}
               className="w-80 h-10 py-2 px-2 border-b border-[#D6DBDE] text-base text-[#ABB1B8] mb-6"

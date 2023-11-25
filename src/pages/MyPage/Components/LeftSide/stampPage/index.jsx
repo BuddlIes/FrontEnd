@@ -78,12 +78,12 @@ function StampPage() {
           </div>
           <div className="box-border justify-center w-full">
             <div className="flex flex-col">
-              <div className="max-w-full text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5 mb-4">
+              <div className="max-w-full text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5 mb-2">
                 나의 스탬프는 현재{" "}
                 <span className="text-[#749C03]">{StampNum}</span>개 입니다.
               </div>
             </div>
-            <div className="flex">{renderStamps()}</div>
+            <div className="flex flex-wrap justify-between">{renderStamps()}</div>
           </div>
         </div>
       </div>
