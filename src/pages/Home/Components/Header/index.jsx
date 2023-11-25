@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../../../../src/assets/WebbyFrames.svg";
 import { Link, useNavigate } from "react-router-dom";
 import BtnLogin from "../../../../../src/assets/button.svg";
-import BtnSign from "../../../../../src/assets/BtnSign.svg";
+import BtnSign from "../../../../../src/assets/btnSign.svg";
 function Header() {
   return (
     <nav className="w-full bg-white  ">
