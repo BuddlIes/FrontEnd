@@ -20,14 +20,16 @@ function StampPage() {
       getStampNum(response.data);
       console.log("스탬프 개수: ", response.data);
       console.log("학번: ", localStorage.getItem("schoolNum"));
+      const StampNumNum = response.data + 20; // 데이터 조작..중
+      getStampNum(StampNumNum);
     } catch (error) {
       console.log("에러 발생:", error);
     }
-  };
+  }
 
   const renderStamps = () => {
     const stamps = [];
-    for (let i = 1; i <= StampNum; i++) {
+    for (let i = 1; i <= localStorage.getItem("StampNum"); i++) {
       stamps.push(
         <Stamp
           key={i}
@@ -80,7 +82,7 @@ function StampPage() {
             <div className="flex flex-col">
               <div className="max-w-full text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5 mb-2">
                 나의 스탬프는 현재{" "}
-                <span className="text-[#749C03]">{StampNum}</span>개 입니다.
+                <span className="text-[#749C03]">{localStorage.getItem("StampNum")}</span>개 입니다.
               </div>
             </div>
             <div className="flex flex-wrap justify-between">{renderStamps()}</div>
