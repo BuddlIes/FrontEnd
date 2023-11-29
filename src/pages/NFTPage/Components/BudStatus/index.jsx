@@ -4,47 +4,18 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function BudStatus() {
-  const [StampNum, setStampNum] = useState(0);
+  let [StampNum, setStampNum] = useState(0);
   const studentId = localStorage.getItem("schoolNum");
-  const UpStampNum = 0;
 
   useEffect(() => {
-    // 처음에 한 번 호출
-    //updateStampCounter();
     StampCounter();
 
-    // 5초마다 스탬프 개수 업데이트
     const intervalId = setInterval(() => {
-      StampCounter(); //updateStampCounter();
+      StampCounter();
     }, 5000);
 
-    // 컴포넌트가 언마운트되면 interval 제거
     return () => clearInterval(intervalId);
   }, []);
-
-  {
-    /*const updateStampCounter = async () => {
-    try {
-      // 로컬 스토리지에서 StampNum 값을 가져옴
-      const localStampNum = localStorage.getItem("StampNum");
-
-      if (localStampNum) {
-        // 가져온 값이 있으면 해당 값으로 스탬프 개수 업데이트
-        setStampNum(parseInt(localStampNum, 10));
-        console.log("로컬 스토리지에서 스탬프 개수 가져옴:", localStampNum);
-      } else {
-        // 가져온 값이 없으면 서버에서 값을 가져옴
-        const response = await axios.get(
-          `http://52.79.132.18:8443/stamp/get_stamp_count?user_number=${studentId}`
-        );
-        setStampNum(response.data);
-        console.log("스탬프 개수: ", response.data);
-      }
-    } catch (error) {
-      console.log("에러 발생:", error);
-    }
-  };*/
-  }
 
   const StampCounter = async () => {
     const url = `http://52.79.132.18:8443/stamp/get_stamp_count?user_number=${studentId}`;
@@ -52,12 +23,9 @@ function BudStatus() {
     try {
       const response = await axios.get(url);
       setStampNum(response.data);
-      console.log("B1스탬프 개수: ", StampNum);
-      const StampNumNum = response.data + 20; // 데이터 조작..중
-      console.log("B2스탬프 개수: ", StampNumNum);
-      setStampNum(StampNumNum);
-      const StampNumNum1 = localStorage.getItem("StampNum");
-      console.log("B3 업: ", StampNumNum1);
+      console.log("스탬프 개수: ", response.data);
+      StampNum = response.data;
+      setStampNum(StampNum);
     } catch (error) {
       console.log("에러 발생:", error);
     }
@@ -80,7 +48,7 @@ function BudStatus() {
         <div className="flex justify-between items-center text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5">
           <div>
             나의 스탬프는 현재{" "}
-            <span className="text-[#749C03]">{localStorage.getItem("StampNum")}</span>개 입니다.
+            <span className="text-[#749C03]">{StampNum}</span>개 입니다.
           </div>
           <Link
             to="/mypage/StampPage"

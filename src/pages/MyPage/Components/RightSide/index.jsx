@@ -86,9 +86,6 @@ function RightSide() {
       const response = await axios.get(url);
       getStampNum(response.data);
       console.log("스탬프 개수: ", response.data);
-      const StampNumNum = response.data + 20; // 데이터 조작..중
-      getStampNum(StampNumNum);
-      console.log(StampNumNum);
     } catch (error) {
       console.log("에러 발생:", error);
     }
@@ -125,7 +122,7 @@ function RightSide() {
             나의 스탬프 개수
           </div>
           <div className="text-lg font-semibold justify-center text-center items-center text-[#161718]">
-            <span className="text-[#749C03] text-5xl">{localStorage.getItem("StampNum")}</span> 개
+            <span className="text-[#749C03] text-5xl">{StampNum}</span> 개
           </div>
         </div>
         <div className="w-1/3 h-36 border border-[#D6DBDE] rounded-lg py-6 px-5">
@@ -152,16 +149,8 @@ function RightSide() {
       <div className="flex flex-row items-center pt-8 pb-40">
         <div>
           <div
-            className={`w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4 ${
-              localStorage.getItem("StampNum") == 6 ? "grayscale-0" : "grayscale"
-            }`}
-            onClick={() => {
-              if (localStorage.getItem("StampNum") == 6) {
-                openYellowModal();
-              } else {
-                openFalseModal();
-              }
-            }}
+            className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
+            onClick={openYellowModal}
           >
             <img src="/src/assets/nft1.png" />
           </div>
@@ -171,16 +160,8 @@ function RightSide() {
         </div>
         <div>
           <div
-            className={`w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4 ${
-              StampNum === 35 ? "grayscale-0" : "grayscale"
-            }`}
-            onClick={() => {
-              if (StampNum === 1) {
-                openGreenModal();
-              } else {
-                openFalseModal();
-              }
-            }}
+            className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
+            onClick={openGreenModal}
           >
             <img src="/src/assets/nft2.png" />
           </div>
@@ -190,16 +171,8 @@ function RightSide() {
         </div>
         <div>
           <div
-            className={`w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4 ${
-              StampNum === 35 ? "grayscale-0" : "grayscale"
-            }`}
-            onClick={() => {
-              if (StampNum === 1) {
-                openRedModal();
-              } else {
-                openFalseModal();
-              }
-            }}
+            className="w-48 h-48 flex items-center justify-center p-6 rounded-full bg-[#FFF] border-2 border-[#ECEDEE] mx-4"
+            onClick={openRedModal}
           >
             <img src="/src/assets/nft3.png" />
           </div>
@@ -213,8 +186,8 @@ function RightSide() {
         onRequestClose={closeYellowModal}
         ariaHideApp={false}
         contentLabel="Yellow Modal"
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -247,8 +220,8 @@ function RightSide() {
         onRequestClose={closeGreenModal}
         contentLabel="Green Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -281,8 +254,8 @@ function RightSide() {
         onRequestClose={closeRedModal}
         contentLabel="Red Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -315,8 +288,8 @@ function RightSide() {
         onRequestClose={closeFalseModal}
         contentLabel="False Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg justify-center">
           <h2 className="text-center text-xl font-bold text-bdblack mb-5">

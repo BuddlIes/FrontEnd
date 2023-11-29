@@ -7,10 +7,8 @@ function FirstNFT() {
   const [isYellowModalOpen, setIsYellowModalOpen] = useState(false);
   const [isGreenModalOpen, setIsGreenModalOpen] = useState(false);
   const [isRedModalOpen, setIsRedModalOpen] = useState(false);
-  const [StampNum, getStampNum] = useState(0);
+  let [StampNum, getStampNum] = useState(0);
   const studentId = localStorage.getItem("schoolNum");
-  //const [NFTState, getNFTState] = useState(false);
-  const UPStampNum = localStorage.getItem("StampNum");
 
   useEffect(() => {
     StampCounter();
@@ -22,10 +20,8 @@ function FirstNFT() {
     try {
       const response = await axios.get(url);
       getStampNum(response.data);
-      //localStorage.setItem("StampNum", response.data);
       console.log("N스탬프 개수: ", response.data);
-      const StampNum = response.data + 20;
-      console.log("NStampNum: ", StampNum);
+      StampNum = response.data
       localStorage.setItem("StampNum", StampNum);
     } catch (error) {
       console.log("에러 발생:", error);
@@ -56,10 +52,9 @@ function FirstNFT() {
     setIsRedModalOpen(false);
   };
 
-  {/*const applyNFT = async () => {
-    //NFT 발급 API 연동
+  const applyNFT = async () => {
     const url = `http://52.79.132.18:8443/nft/acquireNFT`;
-    const nftId = 2;
+    const nftId = 1;
     const w = "0x03938ef3C2dc540eD93e12d4Eb346fA8f7ee1793";
 
     try {
@@ -78,13 +73,8 @@ function FirstNFT() {
     } catch (e) {
       console.log("에러 발생:", e);
     }
-  };*/}
+  };
 
-  const applyNFT = () => {
-    const UpStampNum = localStorage.getItem("StampNum") - 5;
-    console.log(UpStampNum);
-    localStorage.setItem("StampNum", UpStampNum);
-  }
 
   return (
     <div className="pb-8 border-b">
@@ -133,8 +123,8 @@ function FirstNFT() {
         onRequestClose={closeYellowModal}
         contentLabel="Yellow Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -156,7 +146,7 @@ function FirstNFT() {
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
               onClick={() => {
-                applyNFT(); // '신청' 버튼을 누르면 applyNFT 함수 호출
+                applyNFT();
                 closeYellowModal();
               }}
             >
@@ -170,8 +160,8 @@ function FirstNFT() {
         onRequestClose={closeGreenModal}
         contentLabel="Green Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -193,7 +183,7 @@ function FirstNFT() {
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
               onClick={() => {
-                //applyNFT(); // '신청' 버튼을 누르면 applyNFT 함수 호출
+                applyNFT();
                 closeGreenModal();
               }}
             >
@@ -207,8 +197,8 @@ function FirstNFT() {
         onRequestClose={closeRedModal}
         contentLabel="Red Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -230,7 +220,7 @@ function FirstNFT() {
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
               onClick={() => {
-                //applyNFT(); // '신청' 버튼을 누르면 applyNFT 함수 호출
+                applyNFT();
                 closeRedModal();
               }}
             >
