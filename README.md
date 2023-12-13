@@ -19,12 +19,25 @@ NFT를 통한 리워드 차등 지급으로 봉사에 대한 참여도를 향상
 <img width="200px" src="https://github.com/BuddlIes/FrontEnd/assets/76727686/3739d3ed-bfc2-4975-8007-41be5f2ab6d8"/> | <img width="200px" src="https://github.com/BuddlIes/FrontEnd/assets/76727686/ce8475c6-f28c-40d5-8ef8-be945ffea397"/> | 
 |:-----:|:-----:|
 |[김유림](https://github.com/Yurim222)|[한도연](https://github.com/wsd9489)|[박민서 (Lamp)](https://github.com/FpRaArNkK)|
-|팀원 👩‍💻|팀원 🧑‍💻|
+|프론트엔드 개발 및 PM 겸임 👩‍💻|프론트엔드 개발 및 팀장 겸임 🧑‍💻|
 </div>
 
 
 <div align="center">
+  
+# ✍️ 주요 기능 ✍️
+</div>
 
+### ☘️ 봉사자 구인 및 도움 요청 글 작성 기능
+### ☘️ 봉사 신청 기능 및 댓글 기능
+- 봉사 활동 신청 버튼 클릭시 신청 가능
+- 추후 socket.io를 이용한 채팅 기능으로 발전시킬 예정
+### ☘️ 봉사 활동 현황에 따른 리워드 차등 지급 기능
+- NFT를 이용하여 봉사 활동 점수에 따라 리워드를 차등으로 지급 가능
+## 
+
+<div align="center">
+  
 # 📜 Rules 📜
 
 </div>
