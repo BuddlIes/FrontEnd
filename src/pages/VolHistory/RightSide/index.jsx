@@ -25,6 +25,7 @@ function RightSide() {
     setVollist(result.data.appliedVolList);
     setVolunteerId(result.data.appliedVolList.volunteerId);
     console.log(result.data.appliedVolList.volunteerId);
+    
   };
 
   useEffect(() => {

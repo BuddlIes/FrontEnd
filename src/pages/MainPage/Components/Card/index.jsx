@@ -61,6 +61,7 @@ function Card({
       if (result) {
         console.log("D");
         setCompleted(true);
+        setIsYellowModalOpen(false);
       }
     }
   };

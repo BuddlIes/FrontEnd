@@ -87,6 +87,8 @@ function DetailBoardPage() {
       config
     );
     console.log(data);
+    
+    setIsYellowModalOpen(false);
     //navigate(`/chat/${id}`);
   };
   const openYellowModal = () => {
