@@ -4,8 +4,9 @@ import axios from "axios";
 import leaf from "../../../../../assets/스탬프.png";
 import Stamp from "./atoms/Stamp";
 import LeftSide from "..";
+
 function StampPage() {
-  const [StampNum, getStampNum] = useState(0);
+  let [StampNum, getStampNum] = useState(0);
   const studentId = localStorage.getItem("schoolNum");
 
   useEffect(() => {
@@ -18,12 +19,11 @@ function StampPage() {
     try {
       const response = await axios.get(url);
       getStampNum(response.data);
-      console.log("스탬프 개수: ", response.data);
-      console.log("학번: ", localStorage.getItem("schoolNum"));
+      console.log("S스탬프 개수: ", response.data);
     } catch (error) {
       console.log("에러 발생:", error);
     }
-  };
+  }
 
   const renderStamps = () => {
     const stamps = [];
@@ -78,12 +78,12 @@ function StampPage() {
           </div>
           <div className="box-border justify-center w-full">
             <div className="flex flex-col">
-              <div className="max-w-full text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5 mb-4">
+              <div className="max-w-full text-2xl text-left text-bdblack font-bold bg-[#EFEFE4] px-5 py-1.5 mb-2">
                 나의 스탬프는 현재{" "}
                 <span className="text-[#749C03]">{StampNum}</span>개 입니다.
               </div>
             </div>
-            <div className="flex">{renderStamps()}</div>
+            <div className="flex flex-wrap justify-between">{renderStamps()}</div>
           </div>
         </div>
       </div>

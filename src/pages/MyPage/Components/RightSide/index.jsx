@@ -1,8 +1,8 @@
 //RightSide
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-//import GaugeChart from "react-gauge-chart";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 function RightSide() {
   const [Voltime, setVoltime] = useState(0);
@@ -13,6 +13,7 @@ function RightSide() {
   const [isYellowModalOpen, setIsYellowModalOpen] = useState(false);
   const [isGreenModalOpen, setIsGreenModalOpen] = useState(false);
   const [isRedModalOpen, setIsRedModalOpen] = useState(false);
+  const [isFalseModalOpen, setIsFalseModalOpen] = useState(false);
 
   const openYellowModal = () => {
     setIsYellowModalOpen(true);
@@ -38,6 +39,14 @@ function RightSide() {
     setIsRedModalOpen(false);
   };
 
+  const openFalseModal = () => {
+    setIsFalseModalOpen(true);
+  };
+
+  const closeFalseModal = () => {
+    setIsFalseModalOpen(false);
+  };
+
   useEffect(() => {
     VolunteerTime();
     VolNickname();
@@ -50,8 +59,7 @@ function RightSide() {
 
     try {
       const response = await axios.get(url);
-      //setVoltime(response.data.completedVolList[0].volTime); // 0 = user_index 게시글 하나씩 봉사시간
-      setVoltime(response.data.totalVolunteerTime); //게시글 기준 전체 봉사 시간
+      setVoltime(response.data.totalVolunteerTime);
       console.log("총 봉사시간: ", response.data.totalVolunteerTime);
     } catch (error) {
       console.log("에러 발생:", error);
@@ -178,8 +186,8 @@ function RightSide() {
         onRequestClose={closeYellowModal}
         ariaHideApp={false}
         contentLabel="Yellow Modal"
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -200,7 +208,7 @@ function RightSide() {
             </button>
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
-              onClick={() => window.open("https://opensea.io/kr")}
+              onClick={() => window.open("https://testnets.opensea.io/")}
             >
               바로 가기
             </button>
@@ -212,8 +220,8 @@ function RightSide() {
         onRequestClose={closeGreenModal}
         contentLabel="Green Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -246,8 +254,8 @@ function RightSide() {
         onRequestClose={closeRedModal}
         contentLabel="Red Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -272,6 +280,40 @@ function RightSide() {
             >
               바로 가기
             </button>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        isOpen={isFalseModalOpen}
+        onRequestClose={closeFalseModal}
+        contentLabel="False Modal"
+        ariaHideApp={false}
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
+      >
+        <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg justify-center">
+          <h2 className="text-center text-xl font-bold text-bdblack mb-5">
+            해당 NFT를 발급받지 않았습니다
+          </h2>
+          <h2 className="text-center text-base font-semibold text-bdblack">
+            스탬프를 모아 NFT를 발급 받아주세요!
+          </h2>
+          <h2 className="text-center text-sm font-normal text-bdblack">
+            NFT 페이지에서 발급가능 합니다.
+          </h2>
+          <div className="flex justify-center">
+            <button
+              className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-[#FFF] text-[#8A8F94] rounded-lg hover:bg-[#D6DBDE] transition-all border border-[#ABB1B8]"
+              onClick={closeFalseModal}
+            >
+              닫기
+            </button>
+            <Link
+              to="/NFT"
+              className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white text-center rounded-lg hover:bg-[#D6DBDE] transition-all"
+            >
+              <button>바로 가기</button>
+            </Link>
           </div>
         </div>
       </Modal>

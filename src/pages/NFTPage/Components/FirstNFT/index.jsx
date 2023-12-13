@@ -7,7 +7,7 @@ function FirstNFT() {
   const [isYellowModalOpen, setIsYellowModalOpen] = useState(false);
   const [isGreenModalOpen, setIsGreenModalOpen] = useState(false);
   const [isRedModalOpen, setIsRedModalOpen] = useState(false);
-  const [StampNum, getStampNum] = useState(0);
+  let [StampNum, getStampNum] = useState(0);
   const studentId = localStorage.getItem("schoolNum");
 
   useEffect(() => {
@@ -20,7 +20,9 @@ function FirstNFT() {
     try {
       const response = await axios.get(url);
       getStampNum(response.data);
-      console.log("스탬프 개수: ", response.data);
+      console.log("N스탬프 개수: ", response.data);
+      StampNum = response.data
+      localStorage.setItem("StampNum", StampNum);
     } catch (error) {
       console.log("에러 발생:", error);
     }
@@ -50,22 +52,29 @@ function FirstNFT() {
     setIsRedModalOpen(false);
   };
 
-  const applyNFT = () => {
-    // 여기서 StampNum을 -5 해줍니다.
-    if (StampNum >= 5) {
-      const newStampNum = StampNum - 5;
-      // 서버에 업데이트된 스탬프 개수를 보내는 API 호출 등이 필요하면 여기에 추가하세요.
-      // 이 예시에서는 로컬 상태만 업데이트합니다.
-      getStampNum(newStampNum);
-      console.log("NFT를 신청하고 난 후의 스탬프 개수:", newStampNum);
-  
-      // 로컬 스토리지에 업데이트된 StampNum 저장
-      localStorage.setItem("StampNum", newStampNum);
-    } else {
-      console.log("스탬프가 부족하여 NFT를 발급받으실 수 없습니다.");
-      alert("스탬프가 부족하여 NFT를 발급받으실 수 없습니다.");
+  const applyNFT = async () => {
+    const url = `http://52.79.132.18:8443/nft/acquireNFT`;
+    const nftId = 1;
+    const w = "0x03938ef3C2dc540eD93e12d4Eb346fA8f7ee1793";
+
+    try {
+      const data = {
+        user_number: studentId,
+        nft_id: nftId,
+        wallet: w,
+      };
+      await axios.post(url, data).then((response) => {
+        console.log(data);
+        console.log(response.data);
+        console.log("연동성공");
+
+        StampCounter();
+      });
+    } catch (e) {
+      console.log("에러 발생:", e);
     }
   };
+
 
   return (
     <div className="pb-8 border-b">
@@ -114,8 +123,8 @@ function FirstNFT() {
         onRequestClose={closeYellowModal}
         contentLabel="Yellow Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -137,7 +146,7 @@ function FirstNFT() {
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
               onClick={() => {
-                applyNFT(); // '신청' 버튼을 누르면 applyNFT 함수 호출
+                applyNFT();
                 closeYellowModal();
               }}
             >
@@ -151,8 +160,8 @@ function FirstNFT() {
         onRequestClose={closeGreenModal}
         contentLabel="Green Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -174,8 +183,8 @@ function FirstNFT() {
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
               onClick={() => {
-                applyNFT(); // '신청' 버튼을 누르면 applyNFT 함수 호출
-                closeYellowModal();
+                applyNFT();
+                closeGreenModal();
               }}
             >
               신청
@@ -188,8 +197,8 @@ function FirstNFT() {
         onRequestClose={closeRedModal}
         contentLabel="Red Modal"
         ariaHideApp={false}
-        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25" /* 배경 스타일 */
-        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center" /* 팝업 스타일 */
+        overlayClassName="fixed inset-0 flex items-center justify-center bg-[#36383B] bg-opacity-25"
+        className="w-80 h-52 rounded-lg modal-container bg-white opacity-100 flex items-center justify-center"
       >
         <div className="w-80 h-52 rounded-lg border-2 p-4 shadow-lg">
           <h2 className="text-center text-2xl font-bold text-bdblack mb-5">
@@ -211,8 +220,8 @@ function FirstNFT() {
             <button
               className="w-52 h-11 mt-5 mx-1.5 py-2.5 px-4 bg-main text-white rounded-lg hover:bg-[#D6DBDE] transition-all"
               onClick={() => {
-                applyNFT(); // '신청' 버튼을 누르면 applyNFT 함수 호출
-                closeYellowModal();
+                applyNFT();
+                closeRedModal();
               }}
             >
               신청
